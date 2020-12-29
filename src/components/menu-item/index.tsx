@@ -9,7 +9,7 @@ interface Props {
 
 const MenuItem: React.FC<Props> = ({ title, imageUrl, size }) => {
 	return (
-		<div className={`menu-item ${size}`}>
+		<div className={`menu-item ${size ? size : ""}`}>
 			<div
 				className='background-image'
 				style={{ backgroundImage: `url(${imageUrl})` }}

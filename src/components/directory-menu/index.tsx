@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import MenuItem from "../menu-item";
 import "./index.styles.scss";
 
-interface Section {
+type Section = {
 	title: string;
 	imageUrl: string;
 	id: number;
 	linkUrl: string;
 	size?: string;
-}
+};
 
 interface State {
 	Sections: Section[];
