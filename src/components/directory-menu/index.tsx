@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import MenuItem from "../menu-item";
 import "./index.styles.scss";
+import {
+	hatsImageUrl,
+	jacketsImageUrl,
+	menImageUrl,
+	sneakersImageUrl,
+	womensImageUrl,
+} from "./../../assets/images";
 
 type Section = {
 	title: string;
@@ -22,32 +29,32 @@ class DirectoryMenu extends Component<{}, State> {
 			Sections: [
 				{
 					title: "hats",
-					imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
+					imageUrl: hatsImageUrl,
 					id: 1,
 					linkUrl: "shop/hats",
 				},
 				{
 					title: "jackets",
-					imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
+					imageUrl: jacketsImageUrl,
 					id: 2,
 					linkUrl: "shop/jackets",
 				},
 				{
 					title: "sneakers",
-					imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
+					imageUrl: sneakersImageUrl,
 					id: 3,
 					linkUrl: "shop/sneakers",
 				},
 				{
 					title: "womens",
-					imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
+					imageUrl: womensImageUrl,
 					size: "large",
 					id: 4,
 					linkUrl: "shop/womens",
 				},
 				{
 					title: "mens",
-					imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
+					imageUrl: menImageUrl,
 					size: "large",
 					id: 5,
 					linkUrl: "shop/mens",
@@ -61,15 +68,8 @@ class DirectoryMenu extends Component<{}, State> {
 
 		return (
 			<div className='directory-menu'>
-				{Sections.map(({ id, title, imageUrl, size }) => {
-					return (
-						<MenuItem
-							key={id}
-							title={title}
-							imageUrl={imageUrl}
-							size={size}
-						/>
-					);
+				{Sections.map(({ id, ...otherSectionProps }) => {
+					return <MenuItem key={id} {...otherSectionProps} />;
 				})}
 			</div>
 		);
