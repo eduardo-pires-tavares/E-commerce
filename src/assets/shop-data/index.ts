@@ -3,14 +3,14 @@ export type SHOP_DATA_TYPE = {
 };
 
 export type DATA = {
-	id: number;
+	id?: number;
 	title: string;
 	routeName: string;
 	items: ITEMS[];
 };
 
 export type ITEMS = {
-	id: number;
+	id?: number;
 	name: string;
 	imageUrl: string;
 	price: number;
