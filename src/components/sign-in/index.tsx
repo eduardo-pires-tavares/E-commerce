@@ -2,6 +2,8 @@ import { Component, ChangeEvent } from "react";
 import "./index.styles.scss";
 import FormInput from "../form-input";
 import CustomButton from "../custom-button";
+import { signInWithGoogle } from "../../firebase";
+
 interface State {
 	email: string;
 	password: string;
@@ -57,7 +59,12 @@ class SignIn extends Component<{}, State> {
 						type='password'
 					/>
 				</form>
-				<CustomButton type='submit'>Sign in</CustomButton>
+				<div className='sign-in-button-wrapper'>
+					<CustomButton type='submit'>Sign in</CustomButton>
+					<CustomButton isGoogleSignIn onClick={signInWithGoogle}>
+						Sign in with google
+					</CustomButton>
+				</div>
 			</div>
 		);
 	}
