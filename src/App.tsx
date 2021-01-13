@@ -4,12 +4,11 @@ import Header from "./components/header";
 import Homepage from "./pages/homepage";
 import ShopPage from "./pages/shop";
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up";
-import { auth } from "./firebase";
+import { auth, createUserProfileDocument, User } from "./firebase";
 import { Component } from "react";
-import firebase from "firebase";
 
 interface State {
-	currentUser: firebase.User | null;
+	currentUser: User | null;
 }
 
 class App extends Component<{}, State> {
@@ -23,8 +22,21 @@ class App extends Component<{}, State> {
 	unsubscribeFromAuth: any = null;
 
 	componentDidMount() {
-		this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-			this.setState({ currentUser: user });
+		this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
+			if (user) {
+				const userRef = await createUserProfileDocument(user, {});
+
+				userRef!.onSnapshot(snapshot => {
+					this.setState({
+						currentUser: {
+							id: snapshot.id,
+							...snapshot.data(),
+						},
+					});
+				});
+			}
+
+			this.setState({ currentUser: null });
 		});
 	}
 

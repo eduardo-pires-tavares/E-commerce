@@ -1,11 +1,10 @@
 import "./index.styles.scss";
 import { ReactComponent as Logo } from "../../assets/logo/logo.svg";
 import { Link } from "react-router-dom";
-import firebase from "firebase";
-import { auth } from "../../firebase";
+import { auth, User } from "../../firebase";
 
 type Props = {
-	currentUser: firebase.User | null;
+	currentUser: User | null;
 };
 
 const Header = ({ currentUser }: Props) => {
