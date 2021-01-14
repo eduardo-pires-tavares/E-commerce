@@ -34,9 +34,9 @@ class App extends Component<{}, State> {
 						},
 					});
 				});
+			} else {
+				this.setState({ currentUser: null });
 			}
-
-			this.setState({ currentUser: null });
 		});
 	}
 
