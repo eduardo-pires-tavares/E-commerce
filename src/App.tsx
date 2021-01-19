@@ -1,6 +1,6 @@
 import "./App.styles.scss";
 import { Dispatch } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Header from "./components/header";
 import Homepage from "./pages/homepage";
 import ShopPage from "./pages/shop";
@@ -10,6 +10,7 @@ import { Component } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { setCurrentUser } from "./store/users/actions";
 import { UserActionTypes, UserType } from "./store/users/types";
+import { ApplicationState } from "./store";
 
 class App extends Component<AppProps, {}> {
 	unsubscribeFromAuth: any = null;
@@ -36,24 +37,34 @@ class App extends Component<AppProps, {}> {
 	}
 
 	render() {
+		const { currentUser } = this.props;
+
 		return (
 			<div>
 				<Header />
 				<Switch>
 					<Route exact path='/' component={Homepage} />
 					<Route exact path='/shop' component={ShopPage} />
-					<Route path='/signin' component={SignInAndSignUpPage} />
+					<Route
+						path='/signin'
+						exact
+						render={() => (currentUser ? <Redirect to='/' /> : <SignInAndSignUpPage />)}
+					/>
 				</Switch>
 			</div>
 		);
 	}
 }
 
+const mapStateToProps = ({ user: { currentUser } }: ApplicationState) => ({
+	currentUser,
+});
+
 const mapDispatchToProps = (dispatch: Dispatch<UserActionTypes>) => ({
 	setCurrentUser: (user: UserType) => dispatch(setCurrentUser(user)),
 });
 
-const connector = connect(null, mapDispatchToProps);
+const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type AppProps = ConnectedProps<typeof connector>;
 
