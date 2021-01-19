@@ -1,13 +1,12 @@
 import "./index.styles.scss";
 import { ReactComponent as Logo } from "../../assets/logo/logo.svg";
 import { Link } from "react-router-dom";
-import { auth, User } from "../../firebase";
+import { auth } from "../../firebase";
+import { connect, ConnectedProps } from "react-redux";
+import { ApplicationState } from "../../store";
+import { FC } from "react";
 
-type Props = {
-	currentUser: User | null;
-};
-
-const Header = ({ currentUser }: Props) => {
+const Header: FC<HeaderProps> = ({ currentUser }) => {
 	return (
 		<div className='header'>
 			<div className='header-logo'>
@@ -22,7 +21,6 @@ const Header = ({ currentUser }: Props) => {
 				<Link className='option' to='/shop'>
 					CONTACT
 				</Link>
-
 				{currentUser ? (
 					<div className='option' onClick={() => auth.signOut()}>
 						SIGN OUT
@@ -37,4 +35,12 @@ const Header = ({ currentUser }: Props) => {
 	);
 };
 
-export default Header;
+const mapStateToProps = (state: ApplicationState) => ({
+	currentUser: state.user.currentUser,
+});
+
+const connector = connect(mapStateToProps);
+
+type HeaderProps = ConnectedProps<typeof connector>;
+
+export default connector(Header);

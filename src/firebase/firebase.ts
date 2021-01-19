@@ -1,14 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
-
-export interface User {
-	id?: string;
-	displayName?: string;
-	email?: string;
-	createdAt?: Date;
-	additionalData?: any;
-}
+import { User } from "../store/users/types";
 
 const config = {
 	apiKey: "AIzaSyBHHPyHnEewuLwuPihNaVi6UewpY-w8LAs",
