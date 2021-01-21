@@ -5,8 +5,10 @@ import { auth } from "../../firebase";
 import { connect, ConnectedProps } from "react-redux";
 import { ApplicationState } from "../../store";
 import { FC } from "react";
+import CartIcon from "../cart-icon";
+import CartDropdown from "../cart-dropdown";
 
-const Header: FC<HeaderProps> = ({ currentUser }) => {
+const Header: FC<HeaderProps> = ({ currentUser, cart }) => {
 	return (
 		<div className='header'>
 			<div className='header-logo'>
@@ -30,13 +32,16 @@ const Header: FC<HeaderProps> = ({ currentUser }) => {
 						SIGN IN
 					</Link>
 				)}
+				<CartIcon />
 			</div>
+			{!cart.hidden && <CartDropdown />}
 		</div>
 	);
 };
 
 const mapStateToProps = (state: ApplicationState) => ({
 	currentUser: state.user.currentUser,
+	cart: state.cart,
 });
 
 const connector = connect(mapStateToProps);

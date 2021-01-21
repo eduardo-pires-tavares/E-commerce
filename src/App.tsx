@@ -1,16 +1,16 @@
 import "./App.styles.scss";
 import { Dispatch } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import Header from "./components/header";
-import Homepage from "./pages/homepage";
-import ShopPage from "./pages/shop";
-import SignInAndSignUpPage from "./pages/sign-in-and-sign-up";
 import { auth, createUserProfileDocument } from "./firebase";
 import { Component } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { setCurrentUser } from "./store/users/actions";
 import { UserActionTypes, UserType } from "./store/users/types";
 import { ApplicationState } from "./store";
+import SignInAndSignUpPage from "./pages/sign-in-and-sign-up";
+import Header from "./components/header";
+import Homepage from "./pages/homepage";
+import ShopPage from "./pages/shop";
 
 class App extends Component<AppProps, {}> {
 	unsubscribeFromAuth: any = null;
