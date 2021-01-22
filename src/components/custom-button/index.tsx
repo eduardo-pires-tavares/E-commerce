@@ -4,13 +4,16 @@ import "./index.styles.scss";
 type Props = {
 	children: ReactNode;
 	isGoogleSignIn?: boolean;
+	inverted?: boolean;
 	[otherProps: string]: any;
 };
 
-const CustomButton = ({ children, isGoogleSignIn, ...otherProps }: Props) => {
+const CustomButton = ({ children, isGoogleSignIn, inverted, ...otherProps }: Props) => {
 	return (
 		<button
-			className={`custom-button ${isGoogleSignIn ? "google-sign-in" : ""}`}
+			className={`custom-button ${isGoogleSignIn ? "google-sign-in" : ""} ${
+				inverted ? "inverted" : ""
+			}`}
 			{...otherProps}
 		>
 			{children}
