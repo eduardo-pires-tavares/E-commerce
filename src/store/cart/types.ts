@@ -11,7 +11,7 @@ export interface CartItem {
 	imageUrl?: string;
 }
 export interface Cart {
-	hidden: boolean;
+	open: boolean;
 	items: CartItem[] | null;
 }
 
