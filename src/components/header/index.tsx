@@ -5,6 +5,8 @@ import { auth } from "../../firebase";
 import { connect, ConnectedProps } from "react-redux";
 import { ApplicationState } from "../../store";
 import { FC } from "react";
+import { ISelectUser, selectCurrentUser } from "../../store/users/selectors";
+import { createStructuredSelector } from "reselect";
 import Cart from "../cart";
 
 const Header: FC<HeaderProps> = ({ currentUser }) => {
@@ -37,8 +39,8 @@ const Header: FC<HeaderProps> = ({ currentUser }) => {
 	);
 };
 
-const mapStateToProps = (state: ApplicationState) => ({
-	currentUser: state.user.currentUser,
+const mapStateToProps = createStructuredSelector<ApplicationState, ISelectUser>({
+	currentUser: selectCurrentUser,
 });
 
 const connector = connect(mapStateToProps);

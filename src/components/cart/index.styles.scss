@@ -33,6 +33,7 @@
 	right: 50px;
 	top: 110px;
 	z-index: 5;
+	transition: all 2s ease;
 
 	.cart-items {
 		height: 240px;
@@ -47,8 +48,18 @@
 		}
 
 		&::-webkit-scrollbar {
-			width: 6px;
+			width: 3px;
 			background-color: #f5f5f5;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background-color: black;
+			outline: 1px solid black;
+		}
+
+		.empty-message {
+			font-size: 18px;
+			margin: 100px auto;
 		}
 	}
 

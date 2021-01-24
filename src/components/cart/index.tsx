@@ -5,12 +5,25 @@ import { ReactComponent as ShoppingIcon } from "../../assets/logo/shopping-bag.s
 import { ApplicationState } from "../../store";
 import { toggleCart } from "../../store/cart/actions";
 import { CartActionTypes, CartItem } from "../../store/cart/types";
+import { createStructuredSelector } from "reselect";
+import {
+	selectCartItemsCount,
+	selectCartItems,
+	selectCartVisibility,
+	ICartSelector,
+} from "../../store/cart/selectors";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 import CustomButton from "../custom-button";
 import CartItemComponent from "../cart-item";
 
-import "./index.styles.scss";
-
-const Cart: FC<CartIconProps> = ({ toggleCart, open, items }) => {
+const Cart: FC<CartIconProps> = ({
+	toggleCart,
+	open,
+	cartItems,
+	cartItemsCount,
+	match,
+	history,
+}) => {
 	const wrapper = useRef<HTMLDivElement>(null);
 	const dropdown = useRef<HTMLDivElement>(null);
 
@@ -35,26 +48,38 @@ const Cart: FC<CartIconProps> = ({ toggleCart, open, items }) => {
 		<div ref={wrapper} className='cart-wrapper'>
 			<div className='cart-icon' onClick={() => toggleCart()}>
 				<ShoppingIcon className='shoping-icon' />
-				<span className='item-count'>999</span>
+				<span className='item-count'>{cartItemsCount}</span>
 			</div>
 
 			{open && (
 				<div ref={dropdown} className='cart-dropdown'>
 					<div className='cart-items'>
-						{items?.map(({ id, ...otherProps }: CartItem) => {
-							return <CartItemComponent key={id} {...otherProps} />;
-						})}
+						{cartItems?.length ? (
+							cartItems?.map(({ id, ...otherProps }: CartItem) => {
+								return <CartItemComponent key={id} {...otherProps} />;
+							})
+						) : (
+							<span className='empty-message'>Your cart is empty</span>
+						)}
 					</div>
-					<CustomButton>Go TO CHECKOUT</CustomButton>
+					<CustomButton
+						onClick={() => {
+							history.push(`${match.url}checkout`);
+							toggleCart();
+						}}
+					>
+						Go TO CHECKOUT
+					</CustomButton>
 				</div>
 			)}
 		</div>
 	);
 };
 
-const mapStateToProps = ({ cart: { items, open } }: ApplicationState) => ({
-	items,
-	open,
+const mapStateToProps = createStructuredSelector<ApplicationState, ICartSelector>({
+	cartItems: selectCartItems,
+	open: selectCartVisibility,
+	cartItemsCount: selectCartItemsCount,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<CartActionTypes>) => ({
@@ -63,6 +88,6 @@ const mapDispatchToProps = (dispatch: Dispatch<CartActionTypes>) => ({
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-type CartIconProps = ConnectedProps<typeof connector>;
+type CartIconProps = ConnectedProps<typeof connector> & RouteComponentProps;
 
-export default connector(Cart);
+export default withRouter(connector(Cart));
