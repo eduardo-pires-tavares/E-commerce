@@ -1,29 +1,83 @@
-import { FC } from "react";
-import { CartItem } from "../../store/cart/types";
+import { FC, Dispatch } from "react";
+import { connect, ConnectedProps } from "react-redux";
+import { clearItemFromCart, removeFromCart, addToCart } from "../../store/cart/actions";
+import { CartItem, CartActionTypes } from "../../store/cart/types";
+import CustomButton from "../custom-button";
 import "./index.styles.scss";
 
-const CheckoutItem: FC<CartItem> = ({ imageUrl, name, price, quantity }) => {
+const CheckoutItem: FC<CheckoutItemProps> = ({
+	cartItem,
+	clearItemFromCart,
+	removeItemFromCart,
+	addItemToCart,
+}) => {
+	const { imageUrl, name, price, quantity } = cartItem;
+
 	return (
 		<div className='checkout-item'>
 			<div className='image-container'>
 				<img src={imageUrl} alt='item' />
+				<CustomButton onClick={() => clearItemFromCart(cartItem)} inverted>
+					Remove
+				</CustomButton>
 			</div>
-			<div className='wrapper'>
+			<div className='item-wrapper'>
 				<div className='name'>
 					<span>{name}</span>
 				</div>
-				<div className='quantity'>
-					<span>{quantity}</span>
+
+				<div className='price-quantity'>
+					<div className='price'>
+						<span>
+							<strong>Price: </strong>
+							{price} $
+						</span>
+					</div>
+					<div className='quantity'>
+						<span>
+							<strong>Quantity: </strong>
+							<span
+								className='decrease'
+								onClick={() =>
+									quantity !== 1
+										? removeItemFromCart(cartItem)
+										: clearItemFromCart(cartItem)
+								}
+							>
+								&#10094;
+							</span>
+							{quantity}
+							<span className='increase' onClick={() => addItemToCart(cartItem)}>
+								&#10095;
+							</span>
+						</span>
+					</div>
 				</div>
-				<div className='price'>
-					<span>{price}</span>
-				</div>
-				<div className='remove-button'>
-					<span>&#10005;</span>
+				<div className='sub-total'>
+					<span>
+						<strong>Sub-Total: </strong>
+						{price! * quantity!} $
+					</span>
 				</div>
 			</div>
 		</div>
 	);
 };
 
-export default CheckoutItem;
+const mapDispatchToProps = (dispatch: Dispatch<CartActionTypes>) => {
+	return {
+		clearItemFromCart: (data: CartItem) => dispatch(clearItemFromCart(data)),
+		addItemToCart: (data: CartItem) => dispatch(addToCart(data)),
+		removeItemFromCart: (data: CartItem) => dispatch(removeFromCart(data)),
+	};
+};
+
+const connector = connect(null, mapDispatchToProps);
+
+type Props = {
+	cartItem: CartItem;
+};
+
+type CheckoutItemProps = ConnectedProps<typeof connector> & Props;
+
+export default connector(CheckoutItem);

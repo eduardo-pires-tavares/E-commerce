@@ -11,6 +11,7 @@ import {
 	selectCartItems,
 	selectCartVisibility,
 	ICartSelector,
+	selectCartTotalPrice,
 } from "../../store/cart/selectors";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import CustomButton from "../custom-button";
@@ -21,6 +22,7 @@ const Cart: FC<CartIconProps> = ({
 	open,
 	cartItems,
 	cartItemsCount,
+	cartItemsTotalPrice,
 	match,
 	history,
 }) => {
@@ -62,6 +64,16 @@ const Cart: FC<CartIconProps> = ({
 							<span className='empty-message'>Your cart is empty</span>
 						)}
 					</div>
+					<div className='cart-footer'>
+						<span>
+							<strong>Quantity: </strong>
+							{cartItemsCount} Items
+						</span>
+						<span>
+							<strong>Total: </strong>
+							{cartItemsTotalPrice} $
+						</span>
+					</div>
 					<CustomButton
 						onClick={() => {
 							history.push(`${match.url}checkout`);
@@ -80,6 +92,7 @@ const mapStateToProps = createStructuredSelector<ApplicationState, ICartSelector
 	cartItems: selectCartItems,
 	open: selectCartVisibility,
 	cartItemsCount: selectCartItemsCount,
+	cartItemsTotalPrice: selectCartTotalPrice,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<CartActionTypes>) => ({

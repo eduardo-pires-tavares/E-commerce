@@ -1,6 +1,6 @@
 import { Reducer } from "redux";
 import { CartTypes, Cart } from "./types";
-import { addItemToCart } from "./utils";
+import { addItemToCart, clearItemFromCart, removeItemFromCart } from "./utils";
 
 const INITIAL_STATE: Cart = {
 	open: false,
@@ -18,6 +18,18 @@ const cartReducer: Reducer<Cart> = (state = INITIAL_STATE, action) => {
 			return {
 				...state,
 				items: addItemToCart(state.items!, action.payload),
+			};
+		}
+		case CartTypes.REMOVE_FROM_CART: {
+			return {
+				...state,
+				items: removeItemFromCart(state.items!, action.payload),
+			};
+		}
+		case CartTypes.CLEAR_FROM_CART: {
+			return {
+				...state,
+				items: clearItemFromCart(state.items!, action.payload),
 			};
 		}
 		default:

@@ -9,30 +9,14 @@ import "./index.styles.scss";
 const CheckoutPage: FC<CheckoutPageProps> = ({ cartItems, cartItemsTotalPrice }) => {
 	return (
 		<div className='checkout-page'>
-			<div className='checkout-header'>
-				<div className='header-block'>
-					<span>Product</span>
-				</div>
-				<div className='header-block'>
-					<span>Description</span>
-				</div>
-				<div className='header-block'>
-					<span>Quantity</span>
-				</div>
-				<div className='header-block'>
-					<span>Price</span>
-				</div>
-				<div className='header-block'>
-					<span>Remove</span>
-				</div>
+			<div className='checkout-page-items'>
+				{cartItems?.map(item => {
+					return <CheckoutItem key={item.id} cartItem={item} />;
+				})}
 			</div>
-			{cartItems?.map(({ id, ...otherProps }) => {
-				return <CheckoutItem key={id} {...otherProps} />;
-			})}
-			<div className='total'>
+			<div className='checkout-page-price'>
 				<span>
-					<strong>TOTAL: </strong>
-					{cartItemsTotalPrice}
+					<strong>Total:</strong> {cartItemsTotalPrice} $
 				</span>
 			</div>
 		</div>

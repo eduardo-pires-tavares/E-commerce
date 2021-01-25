@@ -1,6 +1,8 @@
 export enum CartTypes {
 	TOGGLE_CART = "@cart/TOGGLE_CART",
 	ADD_TO_CART = "@cart/ADD_TO_CART",
+	CLEAR_FROM_CART = "@cart/CLEAR_FROM_CART",
+	REMOVE_FROM_CART = "@cart/REMOVE_FROM_CART",
 }
 
 export interface CartItem {
@@ -28,4 +30,18 @@ interface AddToCartAction {
 	payload: CartItem;
 }
 
-export type CartActionTypes = ToggleCartAction | AddToCartAction;
+interface ClearItemFromCart {
+	type: typeof CartTypes.CLEAR_FROM_CART;
+	payload: CartItem;
+}
+
+interface RemoveItemFromCart {
+	type: typeof CartTypes.REMOVE_FROM_CART;
+	payload: CartItem;
+}
+
+export type CartActionTypes =
+	| ToggleCartAction
+	| AddToCartAction
+	| RemoveItemFromCart
+	| ClearItemFromCart;
