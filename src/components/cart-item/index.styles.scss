@@ -16,8 +16,18 @@
 		justify-content: center;
 		padding: 10px 20px;
 
-		.name {
-			font-size: 16px;
+		.name-remove-button {
+			display: flex;
+			flex-direction: row;
+
+			.remove-button {
+				padding-left: 5px;
+				cursor: pointer;
+			}
+
+			.name {
+				font-size: 16px;
+			}
 		}
 	}
 }

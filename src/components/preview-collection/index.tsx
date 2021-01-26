@@ -1,4 +1,4 @@
-import { ITEMS, DATA } from "../../assets/shop-data";
+import { ITEMS, DATA } from "../../store/shop/types";
 import CollectionItem from "../collection-item";
 
 import "./index.styles.scss";

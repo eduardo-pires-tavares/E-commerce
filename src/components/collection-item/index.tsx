@@ -1,6 +1,7 @@
 import { Dispatch } from "react";
 import { connect, ConnectedProps } from "react-redux";
-import { ITEMS } from "../../assets/shop-data";
+import { ITEMS } from "../../store/shop/types";
+
 import { addToCart } from "../../store/cart/actions";
 import { CartActionTypes, CartItem } from "../../store/cart/types";
 import CustomButton from "../custom-button";

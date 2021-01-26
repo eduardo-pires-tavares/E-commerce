@@ -57,8 +57,8 @@ const Cart: FC<CartIconProps> = ({
 				<div ref={dropdown} className='cart-dropdown'>
 					<div className='cart-items'>
 						{cartItems?.length ? (
-							cartItems?.map(({ id, ...otherProps }: CartItem) => {
-								return <CartItemComponent key={id} {...otherProps} />;
+							cartItems?.map((item: CartItem) => {
+								return <CartItemComponent key={item.id} cartItem={item} />;
 							})
 						) : (
 							<span className='empty-message'>Your cart is empty</span>
