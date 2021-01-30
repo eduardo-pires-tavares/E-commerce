@@ -21,8 +21,6 @@ export const addItemToCart = (cartItems: CartItem[], cartItemToAdd: CartItem) =>
 export const removeItemFromCart = (cartItems: CartItem[], cartItemToRemove: CartItem) => {
 	const existingCartItem = cartItems.find(item => item.id === cartItemToRemove.id);
 
-	console.log("ola");
-
 	if (existingCartItem) {
 		return cartItems.map((item: CartItem) => {
 			if (item.id === cartItemToRemove.id) {
