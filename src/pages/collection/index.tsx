@@ -1,9 +1,8 @@
 import "./index.styles.scss";
 import { RouteComponentProps } from "react-router-dom";
 import { ITEMS } from "../../store/shop/types";
-import { createStructuredSelector } from "reselect";
 import { ApplicationState } from "../../store";
-import { IShopSelector, selectShopData } from "../../store/shop/selectors";
+import { selectCollection } from "../../store/shop/selectors";
 import { connect, ConnectedProps } from "react-redux";
 import CollectionItem from "../../components/collection-item";
 
@@ -11,9 +10,7 @@ interface RouteInfo {
 	collection: string;
 }
 
-const Collection = ({ collections, match }: CollectionProps) => {
-	const collection = collections?.find(col => col.routeName === match.params.collection);
-
+const Collection = ({ collection }: CollectionProps) => {
 	return (
 		<div>
 			<div className='collection'>
@@ -28,8 +25,8 @@ const Collection = ({ collections, match }: CollectionProps) => {
 	);
 };
 
-const mapStateToProps = createStructuredSelector<ApplicationState, IShopSelector>({
-	collections: selectShopData,
+const mapStateToProps = (state: ApplicationState, ownProps: RouteComponentProps<RouteInfo>) => ({
+	collection: selectCollection(ownProps.match.params.collection)(state),
 });
 
 const connector = connect(mapStateToProps);

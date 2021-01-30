@@ -2,14 +2,14 @@ import { FC } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { ApplicationState } from "../../store";
-import { IShopSelector, selectShopData } from "../../store/shop/selectors";
+import { IShopSelector, selectCollections } from "../../store/shop/selectors";
 import CollectionPreview from "../preview-collection";
 import "./index.styles.scss";
 
 const CollectionOverview: FC<CollectionOverviewProps> = ({ collections }) => {
 	return (
 		<div className='collection-overview'>
-			{collections?.map(({ id, ...otherProps }) => {
+			{Object.values(collections!).map(({ id, ...otherProps }) => {
 				return <CollectionPreview key={id} {...otherProps} />;
 			})}
 		</div>
@@ -17,7 +17,7 @@ const CollectionOverview: FC<CollectionOverviewProps> = ({ collections }) => {
 };
 
 const mapStateToProps = createStructuredSelector<ApplicationState, IShopSelector>({
-	collections: selectShopData,
+	collections: selectCollections,
 });
 
 const connector = connect(mapStateToProps);

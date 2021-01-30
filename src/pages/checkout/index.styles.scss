@@ -18,4 +18,16 @@
 		width: 100%;
 		font-size: 22px;
 	}
+
+	.checkout-page-stripe {
+		display: flex;
+		justify-content: flex-end;
+		margin-top: 5px;
+	}
+
+	.test-warning {
+		color: red;
+		text-align: center;
+		font-size: 36px;
+	}
 }

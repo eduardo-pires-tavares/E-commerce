@@ -1,5 +1,5 @@
 export type SHOP_DATA_TYPE = {
-	collections: DATA[];
+	collections: HastTable<DATA>;
 };
 
 export type DATA = {
@@ -15,3 +15,7 @@ export type ITEMS = {
 	imageUrl: string;
 	price: number;
 };
+
+export interface HastTable<T> {
+	[key: string]: T;
+}

@@ -2,8 +2,8 @@ import { Reducer } from "redux";
 import { SHOP_DATA_TYPE } from "./types";
 
 const INITIAL_STATE: SHOP_DATA_TYPE = {
-	collections: [
-		{
+	collections: {
+		"hats": {
 			id: 1,
 			title: "Hats",
 			routeName: "hats",
@@ -64,7 +64,7 @@ const INITIAL_STATE: SHOP_DATA_TYPE = {
 				},
 			],
 		},
-		{
+		"sneakers": {
 			id: 2,
 			title: "Sneakers",
 			routeName: "sneakers",
@@ -119,7 +119,8 @@ const INITIAL_STATE: SHOP_DATA_TYPE = {
 				},
 			],
 		},
-		{
+
+		"jackets": {
 			id: 3,
 			title: "Jackets",
 			routeName: "jackets",
@@ -156,7 +157,8 @@ const INITIAL_STATE: SHOP_DATA_TYPE = {
 				},
 			],
 		},
-		{
+
+		"womens": {
 			id: 4,
 			title: "Womens",
 			routeName: "womens",
@@ -205,7 +207,8 @@ const INITIAL_STATE: SHOP_DATA_TYPE = {
 				},
 			],
 		},
-		{
+
+		"mens": {
 			id: 5,
 			title: "Mens",
 			routeName: "mens",
@@ -248,7 +251,7 @@ const INITIAL_STATE: SHOP_DATA_TYPE = {
 				},
 			],
 		},
-	],
+	},
 };
 
 const shopReducer: Reducer<SHOP_DATA_TYPE> = (state = INITIAL_STATE, action) => {
