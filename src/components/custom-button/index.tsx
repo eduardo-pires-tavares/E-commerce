@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
-import "./index.styles.scss";
+
+import { CustomButtonContainer } from "./styles";
 
 type Props = {
 	children: ReactNode;
@@ -8,16 +9,7 @@ type Props = {
 	[otherProps: string]: any;
 };
 
-const CustomButton = ({ children, isGoogleSignIn, inverted, ...otherProps }: Props) => {
-	return (
-		<button
-			className={`custom-button ${isGoogleSignIn ? "google-sign-in" : ""} ${
-				inverted ? "inverted" : ""
-			}`}
-			{...otherProps}
-		>
-			{children}
-		</button>
-	);
+const CustomButton = ({ children, ...otherProps }: Props) => {
+	return <CustomButtonContainer {...otherProps}>{children}</CustomButtonContainer>;
 };
 export default CustomButton;

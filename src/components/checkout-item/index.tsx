@@ -2,8 +2,16 @@ import { FC, Dispatch } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { clearItemFromCart, removeFromCart, addToCart } from "../../store/cart/actions";
 import { CartItem, CartActionTypes } from "../../store/cart/types";
+import {
+	CheckoutItemContainer,
+	Decrease,
+	ImageContainer,
+	Increase,
+	ItemContainer,
+	NameContainer,
+	PriceQuantityContainer,
+} from "./styles";
 import CustomButton from "../custom-button";
-import "./index.styles.scss";
 
 const CheckoutItem: FC<CheckoutItemProps> = ({
 	cartItem,
@@ -14,30 +22,29 @@ const CheckoutItem: FC<CheckoutItemProps> = ({
 	const { imageUrl, name, price, quantity } = cartItem;
 
 	return (
-		<div className='checkout-item'>
-			<div className='image-container'>
+		<CheckoutItemContainer>
+			<ImageContainer>
 				<img src={imageUrl} alt='item' />
 				<CustomButton onClick={() => clearItemFromCart(cartItem)} inverted>
 					Remove
 				</CustomButton>
-			</div>
-			<div className='item-wrapper'>
-				<div className='name'>
+			</ImageContainer>
+			<ItemContainer>
+				<NameContainer>
 					<span>{name}</span>
-				</div>
+				</NameContainer>
 
-				<div className='price-quantity'>
-					<div className='price'>
+				<PriceQuantityContainer>
+					<>
 						<span>
 							<strong>Price: </strong>
 							{price} $
 						</span>
-					</div>
-					<div className='quantity'>
+					</>
+					<>
 						<span>
 							<strong>Quantity: </strong>
-							<span
-								className='decrease'
+							<Decrease
 								onClick={() =>
 									quantity !== 1
 										? removeItemFromCart(cartItem)
@@ -45,22 +52,20 @@ const CheckoutItem: FC<CheckoutItemProps> = ({
 								}
 							>
 								&#10094;
-							</span>
+							</Decrease>
 							{quantity}
-							<span className='increase' onClick={() => addItemToCart(cartItem)}>
-								&#10095;
-							</span>
+							<Increase onClick={() => addItemToCart(cartItem)}>&#10095;</Increase>
 						</span>
-					</div>
-				</div>
-				<div className='sub-total'>
+					</>
+				</PriceQuantityContainer>
+				<>
 					<span>
 						<strong>Sub-Total: </strong>
 						{price! * quantity!} $
 					</span>
-				</div>
-			</div>
-		</div>
+				</>
+			</ItemContainer>
+		</CheckoutItemContainer>
 	);
 };
 

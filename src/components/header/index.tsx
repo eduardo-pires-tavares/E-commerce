@@ -1,41 +1,36 @@
-import "./index.styles.scss";
 import { ReactComponent as Logo } from "../../assets/logo/logo.svg";
-import { Link } from "react-router-dom";
 import { auth } from "../../firebase";
 import { connect, ConnectedProps } from "react-redux";
 import { ApplicationState } from "../../store";
 import { FC } from "react";
 import { ISelectUser, selectCurrentUser } from "../../store/users/selectors";
 import { createStructuredSelector } from "reselect";
+import { LogoContainer, HeaderContainer, OptionLink, OptionsContainer } from "./styles";
 import Cart from "../cart";
 
 const Header: FC<HeaderProps> = ({ currentUser }) => {
 	return (
-		<div className='header'>
-			<div className='header-logo'>
-				<Link to='/'>
-					<Logo className='logo' />
-				</Link>
-			</div>
-			<div className='header-options'>
-				<Link className='option' to='/shop'>
-					SHOP
-				</Link>
-				<Link className='option' to='/shop'>
-					CONTACT
-				</Link>
+		<HeaderContainer>
+			<LogoContainer to='/'>
+				<Logo className='logo' />
+			</LogoContainer>
+
+			<OptionsContainer>
+				<OptionLink to='/shop'>SHOP</OptionLink>
+
+				<OptionLink to='/*'>CONTACT</OptionLink>
 				{currentUser ? (
-					<div className='option' onClick={() => auth.signOut()}>
+					<OptionLink as='div' className='option' onClick={() => auth.signOut()}>
 						SIGN OUT
-					</div>
+					</OptionLink>
 				) : (
-					<Link className='option' to='/signin'>
+					<OptionLink className='option' to='/signin'>
 						SIGN IN
-					</Link>
+					</OptionLink>
 				)}
 				<Cart />
-			</div>
-		</div>
+			</OptionsContainer>
+		</HeaderContainer>
 	);
 };
 

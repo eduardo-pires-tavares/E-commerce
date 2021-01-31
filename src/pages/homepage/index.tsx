@@ -1,12 +1,12 @@
 import DirectoryMenu from "../../components/directory-menu";
 
-import "./index.styles.scss";
+import { HomepageContainer } from "./styles";
 
 const Homepage = () => {
 	return (
-		<div className='homepage'>
+		<HomepageContainer>
 			<DirectoryMenu />
-		</div>
+		</HomepageContainer>
 	);
 };
 

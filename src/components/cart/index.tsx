@@ -1,5 +1,12 @@
 import React, { Dispatch, FC, useRef, useEffect } from "react";
-import "./index.styles.scss";
+import {
+	CartDropdownContainer,
+	CartFooterContainer,
+	CartIconContainer,
+	CartItemContainer,
+	EmptyMessage,
+	ItemCount,
+} from "./styles";
 import { connect, ConnectedProps } from "react-redux";
 import { ReactComponent as ShoppingIcon } from "../../assets/logo/shopping-bag.svg";
 import { ApplicationState } from "../../store";
@@ -48,23 +55,23 @@ const Cart: FC<CartIconProps> = ({
 
 	return (
 		<div ref={wrapper} className='cart-wrapper'>
-			<div className='cart-icon' onClick={() => toggleCart()}>
-				<ShoppingIcon className='shoping-icon' />
-				<span className='item-count'>{cartItemsCount}</span>
-			</div>
+			<CartIconContainer onClick={() => toggleCart()}>
+				<ShoppingIcon />
+				<ItemCount>{cartItemsCount}</ItemCount>
+			</CartIconContainer>
 
 			{open && (
-				<div ref={dropdown} className='cart-dropdown'>
-					<div className='cart-items'>
+				<CartDropdownContainer ref={dropdown}>
+					<CartItemContainer>
 						{cartItems?.length ? (
 							cartItems?.map((item: CartItem) => {
 								return <CartItemComponent key={item.id} cartItem={item} />;
 							})
 						) : (
-							<span className='empty-message'>Your cart is empty</span>
+							<EmptyMessage>Your cart is empty</EmptyMessage>
 						)}
-					</div>
-					<div className='cart-footer'>
+					</CartItemContainer>
+					<CartFooterContainer>
 						<span>
 							<strong>Quantity: </strong>
 							{cartItemsCount} Items
@@ -73,7 +80,7 @@ const Cart: FC<CartIconProps> = ({
 							<strong>Total: </strong>
 							{cartItemsTotalPrice} $
 						</span>
-					</div>
+					</CartFooterContainer>
 					<CustomButton
 						onClick={() => {
 							history.push(`${match.url}checkout`);
@@ -82,7 +89,7 @@ const Cart: FC<CartIconProps> = ({
 					>
 						Go TO CHECKOUT
 					</CustomButton>
-				</div>
+				</CartDropdownContainer>
 			)}
 		</div>
 	);

@@ -1,26 +1,24 @@
-import "./index.styles.scss";
 import { Dispatch, FC } from "react";
 import { CartActionTypes, CartItem } from "../../store/cart/types";
 import { connect, ConnectedProps } from "react-redux";
 import { clearItemFromCart } from "../../store/cart/actions";
+import { CartItemContainer, ActionContainer, ItemDetailsContainer, Name, Remove } from "./styles";
 
 const CartItemComponent: FC<CartItemProps> = ({ cartItem, clearItemFromCart }) => {
 	const { imageUrl, name, price, quantity } = cartItem;
 	return (
-		<div className='cart-item'>
+		<CartItemContainer>
 			<img src={imageUrl} alt='item'></img>
-			<div className='item-details'>
-				<div className='name-remove-button'>
-					<span className='name'>{name}</span>
-					<span className='remove-button' onClick={() => clearItemFromCart(cartItem)}>
-						&#10006;
-					</span>
-				</div>
-				<span className='price'>
+			<ItemDetailsContainer>
+				<ActionContainer>
+					<Name>{name}</Name>
+					<Remove onClick={() => clearItemFromCart(cartItem)}>&#10006;</Remove>
+				</ActionContainer>
+				<span>
 					{quantity} x {price}$
 				</span>
-			</div>
-		</div>
+			</ItemDetailsContainer>
+		</CartItemContainer>
 	);
 };
 
