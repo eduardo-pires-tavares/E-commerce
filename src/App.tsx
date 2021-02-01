@@ -14,6 +14,7 @@ import Header from "./components/header";
 import Homepage from "./pages/homepage";
 import ShopPage from "./pages/shop";
 import CheckoutPage from "./pages/checkout";
+
 class App extends Component<AppProps, {}> {
 	unsubscribeFromAuth: any = null;
 

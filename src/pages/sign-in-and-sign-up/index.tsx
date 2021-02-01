@@ -1,13 +1,13 @@
 import SignIn from "../../components/sign-in";
 import SignUp from "../../components/sign-up";
-import "./index.styles.scss";
+import { Wrapper } from "./styles";
 
 const SignInAndSignUpPage = () => {
 	return (
-		<div className='wrapper'>
+		<Wrapper>
 			<SignIn />
 			<SignUp />
-		</div>
+		</Wrapper>
 	);
 };
 

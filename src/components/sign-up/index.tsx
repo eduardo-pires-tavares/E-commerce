@@ -1,9 +1,8 @@
 import { ChangeEvent, Component, FormEvent } from "react";
 import { auth, createUserProfileDocument } from "../../firebase";
+import { SignUpContainer, Title } from "./styles";
 import CustomButton from "../custom-button";
 import FormInput from "../form-input";
-
-import "./index.styles.scss";
 
 interface State {
 	email: string;
@@ -68,8 +67,8 @@ class SignUp extends Component<{}, State> {
 	render() {
 		const { displayName, email, password, confirmPassword } = this.state;
 		return (
-			<div className='sign-up'>
-				<h2 className='title'>I do not have a google account</h2>
+			<SignUpContainer>
+				<Title>I do not have a google account</Title>
 				<span>Sign up with your email and password</span>
 				<form className='sign-up-form' onSubmit={this.handleSubmit}>
 					<FormInput
@@ -108,11 +107,9 @@ class SignUp extends Component<{}, State> {
 						type='password'
 						handleChange={this.handleChange}
 					/>
-					<div className='sign-in-button-wrapper'>
-						<CustomButton type='submit'>Sign Up</CustomButton>
-					</div>
+					<CustomButton type='submit'>Sign Up</CustomButton>
 				</form>
-			</div>
+			</SignUpContainer>
 		);
 	}
 }

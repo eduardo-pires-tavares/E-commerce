@@ -1,9 +1,9 @@
-import "./index.styles.scss";
 import { RouteComponentProps } from "react-router-dom";
 import { ITEMS } from "../../store/shop/types";
 import { ApplicationState } from "../../store";
 import { selectCollection } from "../../store/shop/selectors";
 import { connect, ConnectedProps } from "react-redux";
+import { CollectionContainer, FullCollectionContainer, Title } from "./styles";
 import CollectionItem from "../../components/collection-item";
 
 interface RouteInfo {
@@ -13,14 +13,14 @@ interface RouteInfo {
 const Collection = ({ collection }: CollectionProps) => {
 	return (
 		<div>
-			<div className='collection'>
-				<h1 className='title'>{collection?.title.toUpperCase()}</h1>
-				<div className='collection-full'>
+			<CollectionContainer>
+				<Title>{collection?.title.toUpperCase()}</Title>
+				<FullCollectionContainer>
 					{collection?.items?.map(({ id, ...otherComponentProps }: ITEMS) => {
 						return <CollectionItem key={id} id={id} {...otherComponentProps} />;
 					})}
-				</div>
-			</div>
+				</FullCollectionContainer>
+			</CollectionContainer>
 		</div>
 	);
 };

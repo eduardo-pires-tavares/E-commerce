@@ -1,6 +1,8 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import { DATA } from "../store/shop/types";
+
 import { User } from "../store/users/types";
 
 const config = {
@@ -46,6 +48,37 @@ export const createUserProfileDocument = async (
 	}
 
 	return userRef;
+};
+
+export const addCollectionAndDocuments = async (collectionKey: string, objectsToAdd: any) => {
+	const collectionRef = firestore.collection(collectionKey);
+
+	const batch = firestore.batch();
+
+	objectsToAdd.forEach((element: any) => {
+		const newDocRef = collectionRef.doc();
+		batch.set(newDocRef, element);
+	});
+
+	await batch.commit();
+};
+
+export const convertCollectionsSnapshotToMap = (
+	collections: firebase.firestore.QuerySnapshot<DATA>,
+) => {
+	const transformedCollection = collections.docs.map(doc => {
+		const { items, title } = doc.data();
+		return {
+			id: doc.id,
+			routeName: encodeURI(title.toLowerCase()),
+			title,
+			items,
+		};
+	});
+	return transformedCollection.reduce((acc: any, collection) => {
+		acc[collection.title.toLowerCase()] = collection;
+		return acc;
+	}, {});
 };
 
 export const auth = firebase.auth();

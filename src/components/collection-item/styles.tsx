@@ -9,13 +9,13 @@ const buttonStyles = css`
 		width: 80px;
 		opacity: 0.7;
 		position: absolute;
-		top: 200px;
+		top: 350px;
 	}
 `;
 
 export const CollectionItemContainer = styled.div`
 	width: 22%;
-	height: 350px;
+	height: 550px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;

@@ -18,7 +18,7 @@ const Header: FC<HeaderProps> = ({ currentUser }) => {
 			<OptionsContainer>
 				<OptionLink to='/shop'>SHOP</OptionLink>
 
-				<OptionLink to='/*'>CONTACT</OptionLink>
+				<OptionLink to='/'>COLLECTIONS</OptionLink>
 				{currentUser ? (
 					<OptionLink as='div' className='option' onClick={() => auth.signOut()}>
 						SIGN OUT

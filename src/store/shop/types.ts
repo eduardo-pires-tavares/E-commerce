@@ -1,5 +1,9 @@
+export enum ShopTypes {
+	UPDATE_COLLECTIONS = "@shop/UPDATE_COLLECTIONS",
+}
+
 export type SHOP_DATA_TYPE = {
-	collections: HastTable<DATA>;
+	collections: HashTable<DATA>;
 };
 
 export type DATA = {
@@ -16,6 +20,13 @@ export type ITEMS = {
 	price: number;
 };
 
-export interface HastTable<T> {
+export interface HashTable<T> {
 	[key: string]: T;
 }
+
+interface updateCollectionsAction {
+	type: typeof ShopTypes.UPDATE_COLLECTIONS;
+	payload: HashTable<DATA>;
+}
+
+export type ShopActionTypes = updateCollectionsAction;

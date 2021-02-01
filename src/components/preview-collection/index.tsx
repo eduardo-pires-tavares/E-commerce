@@ -1,21 +1,20 @@
 import { ITEMS, DATA } from "../../store/shop/types";
 import CollectionItem from "../collection-item";
-
-import "./index.styles.scss";
+import { Title, CollectionPreviewContainer, Preview } from "./styles";
 
 const CollectionPreview = ({ items, title }: DATA) => {
 	return (
 		<div>
-			<div className='collection-preview'>
-				<h1 className='title'>{title.toUpperCase()}</h1>
-				<div className='preview'>
+			<CollectionPreviewContainer>
+				<Title>{title.toUpperCase()}</Title>
+				<Preview>
 					{items
 						.filter((_, idx: number) => idx < 4)
 						.map(({ id, ...otherComponentProps }: ITEMS) => {
 							return <CollectionItem key={id} id={id} {...otherComponentProps} />;
 						})}
-				</div>
-			</div>
+				</Preview>
+			</CollectionPreviewContainer>
 		</div>
 	);
 };

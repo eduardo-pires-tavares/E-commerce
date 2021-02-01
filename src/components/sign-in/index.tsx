@@ -1,8 +1,8 @@
 import { Component, ChangeEvent, FormEvent } from "react";
-import "./index.styles.scss";
+import { auth, signInWithGoogle } from "../../firebase";
+import { SignInContainer, Title, ButtonWrapper } from "./styles";
 import FormInput from "../form-input";
 import CustomButton from "../custom-button";
-import { auth, signInWithGoogle } from "../../firebase";
 
 interface State {
 	email: string;
@@ -48,8 +48,8 @@ class SignIn extends Component<{}, State> {
 	render() {
 		const { email, password } = this.state;
 		return (
-			<div className='sign-in'>
-				<h2 className='title'>I already have an account</h2>
+			<SignInContainer>
+				<Title>I already have an account</Title>
 				<span>Sign in with your email and password</span>
 				<form onSubmit={this.handleSubmit}>
 					<FormInput
@@ -70,14 +70,14 @@ class SignIn extends Component<{}, State> {
 						id='password'
 						type='password'
 					/>
-					<div className='sign-in-button-wrapper'>
+					<ButtonWrapper>
 						<CustomButton type='submit'>Sign in</CustomButton>
 						<CustomButton type='button' isGoogleSignIn onClick={signInWithGoogle}>
 							Sign in with google
 						</CustomButton>
-					</div>
+					</ButtonWrapper>
 				</form>
-			</div>
+			</SignInContainer>
 		);
 	}
 }

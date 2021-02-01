@@ -1,34 +1,40 @@
 import { FC } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import CheckoutItem from "../../components/checkout-item";
-import StripeCheckoutButton from "../../components/stripe";
 import { ApplicationState } from "../../store";
 import { selectCartItems, selectCartTotalPrice, ICartSelector } from "../../store/cart/selectors";
-import "./index.styles.scss";
+import {
+	CheckoutPageContainer,
+	PriceContainer,
+	ItemsContainer,
+	StripeContainer,
+	WarningContainer,
+} from "./styles";
+import CheckoutItem from "../../components/checkout-item";
+import StripeCheckoutButton from "../../components/stripe";
 
 const CheckoutPage: FC<CheckoutPageProps> = ({ cartItems, cartItemsTotalPrice }) => {
 	return (
-		<div className='checkout-page'>
-			<div className='checkout-page-items'>
+		<CheckoutPageContainer>
+			<ItemsContainer>
 				{cartItems?.map(item => {
 					return <CheckoutItem key={item.id} cartItem={item} />;
 				})}
-			</div>
-			<div className='checkout-page-price'>
+			</ItemsContainer>
+			<PriceContainer>
 				<span>
 					<strong>Total:</strong> {cartItemsTotalPrice} $
 				</span>
-			</div>
-			<div className='checkout-page-stripe'>
+			</PriceContainer>
+			<StripeContainer>
 				<StripeCheckoutButton total={cartItemsTotalPrice!} />
-			</div>
-			<div className='test-warning'>
+			</StripeContainer>
+			<WarningContainer>
 				*Please use the following test VISA credit card for mock payments*
 				<br />
 				4242 4242 4242 4242 - Exp: 12/21 - CVV:123
-			</div>
-		</div>
+			</WarningContainer>
+		</CheckoutPageContainer>
 	);
 };
 

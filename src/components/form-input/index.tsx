@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react";
-import "./index.styles.scss";
+import { FormGroupInput, FormLabel, FormContainer } from "./styles";
 
 type Props = {
 	handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -9,14 +9,10 @@ type Props = {
 
 const FormInput = ({ handleChange, label, ...otherProps }: Props) => {
 	return (
-		<div className='input-group'>
-			<input className='form-input' onChange={e => handleChange(e)} {...otherProps} />
-			{label ? (
-				<label className={`${otherProps.value.length ? "shrink" : ""} form-input-label`}>
-					{label}
-				</label>
-			) : null}
-		</div>
+		<FormContainer>
+			<FormGroupInput onChange={e => handleChange(e)} {...otherProps} />
+			{label && <FormLabel value={otherProps.value.length}>{label}</FormLabel>}
+		</FormContainer>
 	);
 };
 

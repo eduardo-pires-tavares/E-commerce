@@ -1,6 +1,6 @@
 import React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import "./index.styles.scss";
+import { ContentContainer, ImageContainer, MenuItemContainer, SubTitle, Title } from "./styles";
 
 type Props = {
 	title: string;
@@ -13,17 +13,13 @@ type ComposedProps = Props & RouteComponentProps<Props>;
 
 const MenuItem: React.FC<ComposedProps> = ({ title, imageUrl, size, linkUrl, match, history }) => {
 	return (
-		<div
-			className={`menu-item ${size ? size : ""}`}
-			onClick={() => history.push(`${match.url}${linkUrl}`)}
-		>
-			<div className='background-image' style={{ backgroundImage: `url(${imageUrl})` }}></div>
-
-			<div className='content'>
-				<h1 className='title'>{title.toUpperCase()}</h1>
-				<span className='subtitle'>SHOP NOW</span>
-			</div>
-		</div>
+		<MenuItemContainer size={size} onClick={() => history.push(`${match.url}${linkUrl}`)}>
+			<ImageContainer backgroundImage={imageUrl}></ImageContainer>
+			<ContentContainer>
+				<Title>{title.toUpperCase()}</Title>
+				<SubTitle>SHOP NOW</SubTitle>
+			</ContentContainer>
+		</MenuItemContainer>
 	);
 };
 

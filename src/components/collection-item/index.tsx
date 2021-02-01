@@ -14,7 +14,7 @@ import CustomButton from "../custom-button";
 
 const CollectionItem = ({ imageUrl, name, price, id, addToCart }: CollectionItemProps) => {
 	return (
-		<CollectionItemContainer>
+		<CollectionItemContainer className='collection-item'>
 			<ImageContainer backgroundImage={imageUrl} />
 			<CollectionItemFooter>
 				<Name>{name}</Name>
