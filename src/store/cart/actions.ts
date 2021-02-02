@@ -6,6 +6,12 @@ export const toggleCart = (): CartActionTypes => {
 	};
 };
 
+export const clearCart = (): CartActionTypes => {
+	return {
+		type: CartTypes.CLEAR_CART,
+	};
+};
+
 export const addToCart = (data: CartItem): CartActionTypes => {
 	return {
 		type: CartTypes.ADD_TO_CART,

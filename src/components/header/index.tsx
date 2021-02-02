@@ -20,9 +20,12 @@ const Header: FC<HeaderProps> = ({ currentUser }) => {
 
 				<OptionLink to='/'>COLLECTIONS</OptionLink>
 				{currentUser ? (
-					<OptionLink as='div' className='option' onClick={() => auth.signOut()}>
-						SIGN OUT
-					</OptionLink>
+					<>
+						<OptionLink to='/*'>ORDERS</OptionLink>
+						<OptionLink as='div' className='option' onClick={() => auth.signOut()}>
+							SIGN OUT
+						</OptionLink>
+					</>
 				) : (
 					<OptionLink className='option' to='/signin'>
 						SIGN IN
