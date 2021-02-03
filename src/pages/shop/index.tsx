@@ -7,8 +7,15 @@ import { connect, ConnectedProps } from "react-redux";
 import CollectionOverview from "../../components/collection-overview";
 import Collection from "../collection";
 import firebase from "firebase";
+import Loader from "../../components/loader";
 
+const CollectionOverviewWithLoader = Loader(CollectionOverview);
+const CollectionLoader = Loader(Collection);
 class ShopPage extends Component<ShopPageProps, {}> {
+	state = {
+		loading: true,
+	};
+
 	unsubscribeFromAuth: any = null;
 
 	componentDidMount() {
@@ -21,15 +28,27 @@ class ShopPage extends Component<ShopPageProps, {}> {
 		collectionRef.onSnapshot(async snapshot => {
 			const collections = convertCollectionsSnapshotToMap(snapshot);
 			updateCollections(collections);
+			this.setState({ loading: false });
 		});
 	}
 
 	render() {
 		const { match } = this.props;
+		const { loading } = this.state;
+
 		return (
 			<div>
-				<Route exact path={`${match.path}`} component={CollectionOverview} />
-				<Route path={`${match.path}/:collection`} component={Collection} />
+				<Route
+					exact
+					path={`${match.path}`}
+					render={(props: any) => (
+						<CollectionOverviewWithLoader loading={loading} {...props} />
+					)}
+				/>
+				<Route
+					path={`${match.path}/:collection`}
+					render={(props: any) => <CollectionLoader loading={loading} {...props} />}
+				/>
 			</div>
 		);
 	}
