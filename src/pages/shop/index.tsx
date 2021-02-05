@@ -1,40 +1,26 @@
-import { Component, Dispatch } from "react";
+import { Component } from "react";
 import { Route, RouteComponentProps } from "react-router-dom";
-import { firestore, convertCollectionsSnapshotToMap } from "../../firebase";
-import { DATA, ShopActionTypes, HashTable } from "../../store/shop/types";
-import { updateCollection } from "../../store/shop/actions";
+import { ShopActionTypes } from "../../store/shop/types";
+import { createStructuredSelector } from "reselect";
+import { fetchShopCollections } from "../../store/shop/actions";
 import { connect, ConnectedProps } from "react-redux";
 import CollectionOverview from "../../components/collection-overview";
 import Collection from "../collection";
-import firebase from "firebase";
 import Loader from "../../components/loader";
+import { ApplicationState } from "../../store";
+import { IShopSelector, isCollecionsFetching } from "../../store/shop/selectors";
+import { ThunkDispatch } from "redux-thunk";
 
 const CollectionOverviewWithLoader = Loader(CollectionOverview);
 const CollectionLoader = Loader(Collection);
 class ShopPage extends Component<ShopPageProps, {}> {
-	state = {
-		loading: true,
-	};
-
-	unsubscribeFromAuth: any = null;
-
 	componentDidMount() {
-		const { updateCollections } = this.props;
-
-		const collectionRef = firestore.collection(
-			"collections",
-		) as firebase.firestore.CollectionReference<DATA>;
-
-		collectionRef.onSnapshot(async snapshot => {
-			const collections = convertCollectionsSnapshotToMap(snapshot);
-			updateCollections(collections);
-			this.setState({ loading: false });
-		});
+		const { fetchCollectionsAsync } = this.props;
+		fetchCollectionsAsync();
 	}
 
 	render() {
-		const { match } = this.props;
-		const { loading } = this.state;
+		const { match, loading } = this.props;
 
 		return (
 			<div>
@@ -54,11 +40,15 @@ class ShopPage extends Component<ShopPageProps, {}> {
 	}
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<ShopActionTypes>) => ({
-	updateCollections: (data: HashTable<DATA>) => dispatch(updateCollection(data)),
+const mapStateToProps = createStructuredSelector<ApplicationState, IShopSelector>({
+	loading: isCollecionsFetching,
 });
 
-const connector = connect(null, mapDispatchToProps);
+const mapDispatchToProps = (dispatch: ThunkDispatch<ApplicationState, any, ShopActionTypes>) => ({
+	fetchCollectionsAsync: () => dispatch(fetchShopCollections()),
+});
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type ShopPageProps = ConnectedProps<typeof connector> & RouteComponentProps;
 

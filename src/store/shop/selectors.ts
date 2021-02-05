@@ -8,7 +8,10 @@ export const selectCollections = createSelector([selectShop], shop => shop.colle
 export const selectCollection = (collectionName: string) =>
 	createSelector([selectShop], shop => shop.collections[collectionName]);
 
+export const isCollecionsFetching = createSelector([selectShop], shop => shop.loading);
+
 export interface IShopSelector {
 	collections?: ReturnType<typeof selectCollections>;
 	collection?: ReturnType<typeof selectCollection>;
+	loading?: ReturnType<typeof isCollecionsFetching>;
 }

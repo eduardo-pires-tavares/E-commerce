@@ -1,9 +1,13 @@
 export enum ShopTypes {
-	UPDATE_COLLECTIONS = "@shop/UPDATE_COLLECTIONS",
+	SHOP_LOADING = "@shop/SHOP_LOADING",
+	SHOP_SUCCESS = "@shop/SHOP_SUCCESS",
+	SHOP_ERROR = "@shop/SHOP_ERROR",
 }
 
 export type SHOP_DATA_TYPE = {
 	collections: HashTable<DATA>;
+	loading: boolean;
+	errorMessage: string;
 };
 
 export type DATA = {
@@ -23,10 +27,21 @@ export type ITEMS = {
 export interface HashTable<T> {
 	[key: string]: T;
 }
+interface loadCollectionsRequestAction {
+	type: typeof ShopTypes.SHOP_LOADING;
+}
 
-interface updateCollectionsAction {
-	type: typeof ShopTypes.UPDATE_COLLECTIONS;
+interface loadCollectionsSucessAction {
+	type: typeof ShopTypes.SHOP_SUCCESS;
 	payload: HashTable<DATA>;
 }
 
-export type ShopActionTypes = updateCollectionsAction;
+interface loadCollectionErrorAction {
+	type: typeof ShopTypes.SHOP_ERROR;
+	payload: string;
+}
+
+export type ShopActionTypes =
+	| loadCollectionsRequestAction
+	| loadCollectionsSucessAction
+	| loadCollectionErrorAction;

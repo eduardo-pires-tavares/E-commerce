@@ -1,13 +1,12 @@
 import { WrapperContainer, Spinner } from "./styles";
 
-type Props = {
+type loadingProps = {
 	loading: boolean;
 };
 
-const Loading = <P extends object>(Component: React.ComponentType<P>): React.FC<P & Props> => ({
-	loading,
-	...otherProps
-}: Props) => {
+const Loading = <P extends object>(
+	Component: React.ComponentType<P>,
+): React.FC<P & loadingProps> => ({ loading, ...otherProps }: loadingProps) => {
 	return loading ? (
 		<WrapperContainer>
 			<Spinner />
