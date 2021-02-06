@@ -38,6 +38,12 @@ export const CartDropdownContainer = styled.div`
 	z-index: 5;
 	transition: all 2s ease;
 	${buttonStyles}
+
+	@media screen and (max-width:800px) {
+		right: 10px;
+		top: 80px;
+		width: 180px;
+	}
 `;
 
 export const CartItemContainer = styled.div`
@@ -73,4 +79,12 @@ export const CartFooterContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 	font-size: 18px;
+
+	@media screen and (max-device-width: 800px) {
+		flex-direction: column;
+
+		span {
+			padding-bottom: 5px;
+		}
+	}
 `;

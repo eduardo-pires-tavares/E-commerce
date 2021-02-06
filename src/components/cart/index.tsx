@@ -54,7 +54,7 @@ const Cart: FC<CartIconProps> = ({
 	});
 
 	return (
-		<div ref={wrapper} className='cart-wrapper'>
+		<div ref={wrapper}>
 			<CartIconContainer onClick={() => toggleCart()}>
 				<ShoppingIcon />
 				<ItemCount>{cartItemsCount}</ItemCount>

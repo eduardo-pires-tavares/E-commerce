@@ -24,6 +24,10 @@ export const FormContainer = styled.div`
 	margin: 45px 0px;
 
 	${passwordInputStyles}
+
+	@media screen and (max-width: 800px) {
+		width: 80%;
+	}
 `;
 
 export const FormGroupInput = styled.input`

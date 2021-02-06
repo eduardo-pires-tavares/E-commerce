@@ -1,4 +1,3 @@
-import "./App.styles.scss";
 import { Dispatch } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { auth, createUserProfileDocument } from "./firebase";
@@ -9,6 +8,7 @@ import { UserActionTypes, UserType } from "./store/users/types";
 import { ApplicationState } from "./store";
 import { ISelectUser, selectCurrentUser } from "./store/users/selectors";
 import { createStructuredSelector } from "reselect";
+import { GlobalStyle } from "./globalStyles";
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up";
 import Header from "./components/header";
 import Homepage from "./pages/homepage";
@@ -44,6 +44,7 @@ class App extends Component<AppProps, {}> {
 
 		return (
 			<div>
+				<GlobalStyle />
 				<Header />
 				<Switch>
 					<Route exact path='/' component={Homepage} />

@@ -10,6 +10,13 @@ const buttonStyles = css`
 		opacity: 0.7;
 		position: absolute;
 		top: 350px;
+
+		@media screen and (max-width: 800px) {
+			display: block;
+			opacity: 0.9;
+			min-width: 150px;
+			top: 400px;
+		}
 	}
 `;
 
@@ -23,6 +30,10 @@ export const CollectionItemContainer = styled.div`
 	position: relative;
 
 	${buttonStyles}
+
+	@media screen and (max-width: 800px) {
+		width: 40vw;
+	}
 `;
 
 export const ImageContainer = styled.div<ImageContainerProps>`
@@ -44,6 +55,17 @@ export const ImageContainer = styled.div<ImageContainerProps>`
 			opacity: 0.85;
 		}
 	}
+
+	@media screen and (max-width: 800px) {
+		&:hover {
+			opacity: unset;
+
+			button {
+				display: flex;
+				opacity: unset;
+			}
+		}
+	}
 `;
 
 export const CollectionItemFooter = styled.div`
@@ -61,5 +83,5 @@ export const Name = styled.span`
 
 export const Price = styled.span`
 	text-align: end;
-	width: 10%;
+	width: 25%;
 `;

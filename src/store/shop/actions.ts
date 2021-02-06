@@ -42,6 +42,6 @@ export const fetchShopCollections = (): ThunkAction<
 				const collections = convertCollectionsSnapshotToMap(snapshot);
 				dispatch(loadShopSucess(collections));
 			})
-			.catch(error => loadShopError(error.message));
+			.catch(error => dispatch(loadShopError(error.message)));
 	};
 };
