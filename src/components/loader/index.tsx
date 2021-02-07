@@ -1,7 +1,7 @@
 import { WrapperContainer, Spinner } from "./styles";
 
 type loadingProps = {
-	loading: boolean;
+	loading?: boolean;
 };
 
 const Loading = <P extends object>(

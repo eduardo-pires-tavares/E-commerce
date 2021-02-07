@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 	margin: 30px auto;
 
 	@media screen and (max-width: 800px) {
-		width: 650px;
+		width: 100%;
 		grid-template-columns: 1fr;
 	}
 `;

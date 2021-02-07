@@ -15,7 +15,7 @@
 		"noEmit": true,
 		"jsx": "react-jsx",
 		"sourceMap": true,
-		"declaration": true,
+		"declaration": false,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"incremental": true,
