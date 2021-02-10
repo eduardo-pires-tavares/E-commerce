@@ -1,12 +1,10 @@
-import { Component } from "react";
+import { Component, Dispatch } from "react";
 import { Route, RouteComponentProps } from "react-router-dom";
 import { ShopActionTypes } from "../../store/shop/types";
-import { fetchShopCollections } from "../../store/shop/actions";
+import { loadShopStart } from "../../store/shop/actions";
 import { connect, ConnectedProps } from "react-redux";
 import CollectionOverviewContainer from "../../components/collection-overview/collection-overview.container";
 import CollectionPageContainer from "../collection/collection.container";
-import { ApplicationState } from "../../store";
-import { ThunkDispatch } from "redux-thunk";
 
 class ShopPage extends Component<ShopPageProps, {}> {
 	componentDidMount() {
@@ -26,8 +24,8 @@ class ShopPage extends Component<ShopPageProps, {}> {
 	}
 }
 
-const mapDispatchToProps = (dispatch: ThunkDispatch<ApplicationState, any, ShopActionTypes>) => ({
-	fetchCollectionsAsync: () => dispatch(fetchShopCollections()),
+const mapDispatchToProps = (dispatch: Dispatch<ShopActionTypes>) => ({
+	fetchCollectionsAsync: () => dispatch(loadShopStart()),
 });
 
 const connector = connect(null, mapDispatchToProps);
