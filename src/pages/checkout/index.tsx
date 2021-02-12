@@ -9,11 +9,19 @@ import {
 	ItemsContainer,
 	StripeContainer,
 	WarningContainer,
+	RedirectToSignInPayNowButton,
 } from "./styles";
 import CheckoutItem from "../../components/checkout-item";
 import StripeCheckoutButton from "../../components/stripe";
+import { ISelectUser, selectCurrentUser } from "../../store/users/selectors";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 
-const CheckoutPage: FC<CheckoutPageProps> = ({ cartItems, cartItemsTotalPrice }) => {
+const CheckoutPage: FC<CheckoutPageProps> = ({
+	cartItems,
+	cartItemsTotalPrice,
+	currentUser,
+	history,
+}) => {
 	return (
 		<CheckoutPageContainer>
 			<ItemsContainer>
@@ -27,7 +35,13 @@ const CheckoutPage: FC<CheckoutPageProps> = ({ cartItems, cartItemsTotalPrice })
 				</span>
 			</PriceContainer>
 			<StripeContainer>
-				<StripeCheckoutButton total={cartItemsTotalPrice!} />
+				{currentUser ? (
+					<StripeCheckoutButton total={cartItemsTotalPrice!} />
+				) : (
+					<RedirectToSignInPayNowButton onClick={() => history.push("/signin")}>
+						<span>Pay Now</span>
+					</RedirectToSignInPayNowButton>
+				)}
 			</StripeContainer>
 			<WarningContainer>
 				*Please use the following test VISA credit card for mock payments*
@@ -38,13 +52,14 @@ const CheckoutPage: FC<CheckoutPageProps> = ({ cartItems, cartItemsTotalPrice })
 	);
 };
 
-const mapStateToProps = createStructuredSelector<ApplicationState, ICartSelector>({
+const mapStateToProps = createStructuredSelector<ApplicationState, ICartSelector & ISelectUser>({
 	cartItems: selectCartItems,
 	cartItemsTotalPrice: selectCartTotalPrice,
+	currentUser: selectCurrentUser,
 });
 
 const connector = connect(mapStateToProps);
 
-type CheckoutPageProps = ConnectedProps<typeof connector>;
+type CheckoutPageProps = ConnectedProps<typeof connector> & RouteComponentProps;
 
-export default connector(CheckoutPage);
+export default withRouter(connector(CheckoutPage));

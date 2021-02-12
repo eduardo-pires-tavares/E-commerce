@@ -27,6 +27,7 @@ const StripeCheckoutButton = ({ total, clearCart }: StripeCheckoutProps) => {
 			label='Pay Now '
 			shippingAddress
 			billingAddress
+			ComponentClass='div'
 			image='https://sendeyo.com/up/d/f3eb2117da'
 			description={`Your total is $${total}`}
 			amount={stripePrice}
