@@ -1,38 +1,33 @@
-import { Component, ChangeEvent, FormEvent } from "react";
-import { auth, signInWithGoogle } from "../../firebase";
+import { Component, ChangeEvent, FormEvent, Dispatch } from "react";
 import { SignInContainer, Title, ButtonWrapper } from "./styles";
 import FormInput from "../form-input";
 import CustomButton from "../custom-button";
+import { UserActionTypes } from "../../store/users/types";
+import { emailSignInLoadingAction, googleSignInLoadingAction } from "../../store/users/actions";
+import { connect, ConnectedProps } from "react-redux";
 
 interface State {
 	email: string;
 	password: string;
 }
 
-class SignIn extends Component<{}, State> {
-	constructor(props: {}) {
-		super(props);
-
-		this.state = {
-			email: "",
-			password: "",
-		};
-	}
+class SignIn extends Component<SignInProps, State> {
+	state = {
+		email: "",
+		password: "",
+	};
 
 	handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
 		const { email, password } = this.state;
+		const { emailSignInStart } = this.props;
 
-		try {
-			await auth.signInWithEmailAndPassword(email, password);
-			this.setState({
-				email: "",
-				password: "",
-			});
-		} catch (error) {
-			console.log(error);
-		}
+		emailSignInStart({ email, password });
+		this.setState({
+			email: "",
+			password: "",
+		});
 	};
 
 	handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -47,6 +42,7 @@ class SignIn extends Component<{}, State> {
 
 	render() {
 		const { email, password } = this.state;
+		const { googleSignInStart } = this.props;
 		return (
 			<SignInContainer>
 				<Title>I already have an account</Title>
@@ -72,7 +68,7 @@ class SignIn extends Component<{}, State> {
 					/>
 					<ButtonWrapper>
 						<CustomButton type='submit'>Sign in</CustomButton>
-						<CustomButton type='button' isGoogleSignIn onClick={signInWithGoogle}>
+						<CustomButton type='button' isGoogleSignIn onClick={googleSignInStart}>
 							Sign in with google
 						</CustomButton>
 					</ButtonWrapper>
@@ -82,4 +78,13 @@ class SignIn extends Component<{}, State> {
 	}
 }
 
-export default SignIn;
+const mapDispatchToProps = (dispatch: Dispatch<UserActionTypes>) => ({
+	googleSignInStart: () => dispatch(googleSignInLoadingAction()),
+	emailSignInStart: (data: any) => dispatch(emailSignInLoadingAction(data)),
+});
+
+const connector = connect(null, mapDispatchToProps);
+
+type SignInProps = ConnectedProps<typeof connector>;
+
+export default connector(SignIn);

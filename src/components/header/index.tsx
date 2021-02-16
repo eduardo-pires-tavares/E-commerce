@@ -1,14 +1,15 @@
 import { ReactComponent as Logo } from "../../assets/logo/logo.svg";
-import { auth } from "../../firebase";
 import { connect, ConnectedProps } from "react-redux";
 import { ApplicationState } from "../../store";
-import { FC } from "react";
+import { Dispatch, FC } from "react";
 import { ISelectUser, selectCurrentUser } from "../../store/users/selectors";
 import { createStructuredSelector } from "reselect";
 import { LogoContainer, HeaderContainer, OptionLink, OptionsContainer } from "./styles";
 import Cart from "../cart";
+import { UserActionTypes } from "../../store/users/types";
+import { signOutLoadingAction } from "../../store/users/actions";
 
-const Header: FC<HeaderProps> = ({ currentUser }) => {
+const Header: FC<HeaderProps> = ({ currentUser, signOut }) => {
 	return (
 		<HeaderContainer>
 			<LogoContainer to='/'>
@@ -22,7 +23,7 @@ const Header: FC<HeaderProps> = ({ currentUser }) => {
 				{currentUser ? (
 					<>
 						<OptionLink to='/*'>ORDERS</OptionLink>
-						<OptionLink as='div' className='option' onClick={() => auth.signOut()}>
+						<OptionLink as='div' className='option' onClick={() => signOut()}>
 							SIGN OUT
 						</OptionLink>
 					</>
@@ -41,7 +42,11 @@ const mapStateToProps = createStructuredSelector<ApplicationState, ISelectUser>(
 	currentUser: selectCurrentUser,
 });
 
-const connector = connect(mapStateToProps);
+const mapDispatchToProps = (dispatch: Dispatch<UserActionTypes>) => ({
+	signOut: () => dispatch(signOutLoadingAction()),
+});
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type HeaderProps = ConnectedProps<typeof connector>;
 
