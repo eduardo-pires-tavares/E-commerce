@@ -1,11 +1,4 @@
-import { UsersTypes, UserActionTypes, UserType } from "./types";
-
-export const setCurrentUser = (data: UserType): UserActionTypes => {
-	return {
-		type: UsersTypes.SET_CURRENT_USER,
-		payload: data,
-	};
-};
+import { UsersTypes, UserActionTypes, UserType, User } from "./types";
 
 export const googleSignInLoadingAction = (): UserActionTypes => {
 	return {
@@ -63,6 +56,39 @@ export const signOutSuccessAction = (): UserActionTypes => {
 export const signOutErrorAction = (errorMessage: string): UserActionTypes => {
 	return {
 		type: UsersTypes.SIGN_OUT_ERROR,
+		payload: errorMessage,
+	};
+};
+
+export const signUpLoadingAction = ({
+	username,
+	password,
+	email,
+}: {
+	username: string;
+	password: string;
+	email: string;
+}): UserActionTypes => {
+	return {
+		type: UsersTypes.SIGN_UP_LOADING,
+		payload: {
+			email,
+			password,
+			username,
+		},
+	};
+};
+
+export const signUpSuccessAction = (data: User): UserActionTypes => {
+	return {
+		type: UsersTypes.SIGN_UP_SUCCESS,
+		payload: data,
+	};
+};
+
+export const signUpErrorAction = (errorMessage: string): UserActionTypes => {
+	return {
+		type: UsersTypes.SIGN_UP_ERROR,
 		payload: errorMessage,
 	};
 };

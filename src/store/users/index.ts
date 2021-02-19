@@ -9,9 +9,6 @@ const INITIAL_STATE: UserState = {
 
 const userReducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
 	switch (action.type) {
-		case UsersTypes.SET_CURRENT_USER: {
-			return { ...state, currentUser: action.payload };
-		}
 		case UsersTypes.GOOGLE_SIGNIN_LOADING: {
 			return { ...state, loading: true };
 		}
@@ -44,6 +41,26 @@ const userReducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
 			};
 		}
 		case UsersTypes.SIGN_OUT_ERROR: {
+			return {
+				...state,
+				loading: false,
+				errorMessage: action.payload,
+			};
+		}
+		case UsersTypes.SIGN_UP_LOADING: {
+			return {
+				...state,
+				loading: true,
+			};
+		}
+		case UsersTypes.SIGN_UP_SUCCESS: {
+			return {
+				...state,
+				currentUser: action.payload,
+				loading: false,
+			};
+		}
+		case UsersTypes.SIGN_UP_ERROR: {
 			return {
 				...state,
 				loading: false,

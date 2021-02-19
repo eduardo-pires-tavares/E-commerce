@@ -1,8 +1,10 @@
-import { ChangeEvent, Component, FormEvent } from "react";
-import { auth, createUserProfileDocument } from "../../firebase";
+import { ChangeEvent, Component, Dispatch, FormEvent } from "react";
 import { SignUpContainer, Title } from "./styles";
 import CustomButton from "../custom-button";
 import FormInput from "../form-input";
+import { UserActionTypes } from "../../store/users/types";
+import { signUpLoadingAction } from "../../store/users/actions";
+import { connect, ConnectedProps } from "react-redux";
 
 interface State {
 	email: string;
@@ -11,17 +13,13 @@ interface State {
 	displayName: string;
 }
 
-class SignUp extends Component<{}, State> {
-	constructor(props: {}) {
-		super(props);
-
-		this.state = {
-			displayName: "",
-			email: "",
-			password: "",
-			confirmPassword: "",
-		};
-	}
+class SignUp extends Component<SignUpProps, State> {
+	state = {
+		displayName: "",
+		email: "",
+		password: "",
+		confirmPassword: "",
+	};
 
 	handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -31,18 +29,13 @@ class SignUp extends Component<{}, State> {
 			alert("Passwords don't match");
 			return;
 		}
-		try {
-			const { user } = await auth.createUserWithEmailAndPassword(email, password);
+		const { signUpUser } = this.props;
 
-			await createUserProfileDocument(user, { displayName });
-
-			this.setState({
-				displayName: "",
-				email: "",
-				password: "",
-				confirmPassword: "",
-			});
-		} catch (error) {}
+		signUpUser({
+			email,
+			password,
+			username: displayName,
+		});
 	};
 
 	handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -114,4 +107,12 @@ class SignUp extends Component<{}, State> {
 	}
 }
 
-export default SignUp;
+const mapDispatchToProps = (dispatch: Dispatch<UserActionTypes>) => ({
+	signUpUser: (data: any) => dispatch(signUpLoadingAction(data)),
+});
+
+const connector = connect(null, mapDispatchToProps);
+
+type SignUpProps = ConnectedProps<typeof connector>;
+
+export default connector(SignUp);

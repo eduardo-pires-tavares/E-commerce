@@ -1,5 +1,4 @@
 export enum UsersTypes {
-	SET_CURRENT_USER = "@users/SET_CURRENT_USER",
 	GOOGLE_SIGNIN_LOADING = "@users/GOOGLE_SIGNIN_LOADING",
 	GOOGLE_SIGNIN_SUCCESS = "@users/GOOGLE_SIGNIN_SUCCESS",
 	GOOGLE_SIGNIN_ERROR = "@users/GOOGLE_SIGNIN_ERROR",
@@ -9,6 +8,9 @@ export enum UsersTypes {
 	SIGN_OUT_LOADING = "@users/SIGN_OUT_LOADING",
 	SIGN_OUT_SUCCESS = "@users/SIGN_OUT_SUCCESS",
 	SIGN_OUT_ERROR = "@users/SIGN_OUT_ERROR",
+	SIGN_UP_LOADING = "@users/SIGN_UP_LOADING",
+	SIGN_UP_SUCCESS = "@users/SIGN_UP_SUCCESS",
+	SIGN_UP_ERROR = "@users/SIGN_UP_ERROR",
 }
 
 export interface User {
@@ -26,11 +28,6 @@ export interface UserState {
 	currentUser: UserType;
 	loading: boolean;
 	errorMessage: string;
-}
-
-interface SetCurrentUserAction {
-	type: typeof UsersTypes.SET_CURRENT_USER;
-	payload: User | null;
 }
 
 export interface googleSignInLoadingAction {
@@ -77,9 +74,26 @@ export interface emailSignInErrorAction {
 	type: typeof UsersTypes.EMAIL_SIGNIN_ERROR;
 	payload: string;
 }
+export interface signUpLoadingAction {
+	type: typeof UsersTypes.SIGN_UP_LOADING;
+	payload: {
+		username: string;
+		email: string;
+		password: string;
+	};
+}
+
+export interface signUpSuccessAction {
+	type: typeof UsersTypes.SIGN_UP_SUCCESS;
+	payload: User | null;
+}
+
+export interface signUpErrorAction {
+	type: typeof UsersTypes.SIGN_UP_ERROR;
+	payload: string;
+}
 
 export type UserActionTypes =
-	| SetCurrentUserAction
 	| googleSignInLoadingAction
 	| googleSignInErrorAction
 	| googleSignInSuccessAction
@@ -88,4 +102,7 @@ export type UserActionTypes =
 	| emailSignInErrorAction
 	| signOutLoadingAction
 	| signOutSuccessAction
-	| signOutErrorAction;
+	| signOutErrorAction
+	| signUpLoadingAction
+	| signUpSuccessAction
+	| signUpErrorAction;
