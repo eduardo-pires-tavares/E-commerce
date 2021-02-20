@@ -12,21 +12,11 @@ const userReducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
 		case UsersTypes.GOOGLE_SIGNIN_LOADING: {
 			return { ...state, loading: true };
 		}
-		case UsersTypes.GOOGLE_SIGNIN_SUCCESS: {
-			return { ...state, loading: false, currentUser: action.payload };
-		}
-		case UsersTypes.GOOGLE_SIGNIN_ERROR: {
-			return { ...state, loading: false, errorMessage: action.payload };
-		}
+
 		case UsersTypes.EMAIL_SIGNIN_LOADING: {
 			return { ...state, loading: true };
 		}
-		case UsersTypes.EMAIL_SIGNIN_SUCCESS: {
-			return { ...state, loading: false, currentUser: action.payload };
-		}
-		case UsersTypes.EMAIL_SIGNIN_ERROR: {
-			return { ...state, loading: false, errorMessage: action.payload };
-		}
+
 		case UsersTypes.SIGN_OUT_LOADING: {
 			return {
 				...state,
@@ -61,6 +51,20 @@ const userReducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
 			};
 		}
 		case UsersTypes.SIGN_UP_ERROR: {
+			return {
+				...state,
+				loading: false,
+				errorMessage: action.payload,
+			};
+		}
+		case UsersTypes.SIGN_IN_SUCCESS: {
+			return {
+				...state,
+				currentUser: action.payload,
+				loading: false,
+			};
+		}
+		case UsersTypes.SIGN_IN_ERROR: {
 			return {
 				...state,
 				loading: false,

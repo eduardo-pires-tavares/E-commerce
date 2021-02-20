@@ -1,5 +1,5 @@
 import { Route, Switch, Redirect } from "react-router-dom";
-import { Component } from "react";
+import { Component, Dispatch } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { ApplicationState } from "./store";
 import { ISelectUser, selectCurrentUser } from "./store/users/selectors";
@@ -10,8 +10,15 @@ import Header from "./components/header";
 import Homepage from "./pages/homepage";
 import ShopPage from "./pages/shop";
 import CheckoutPage from "./pages/checkout";
+import { UserActionTypes } from "./store/users/types";
+import { checkUserSessionAction } from "./store/users/actions";
 
 class App extends Component<AppProps, {}> {
+	componentDidMount() {
+		const { checkUserSession } = this.props;
+		checkUserSession();
+	}
+
 	render() {
 		const { currentUser } = this.props;
 
@@ -38,7 +45,11 @@ const mapStateToProps = createStructuredSelector<ApplicationState, ISelectUser>(
 	currentUser: selectCurrentUser,
 });
 
-const connector = connect(mapStateToProps);
+const mapDispatchToProps = (dispatch: Dispatch<UserActionTypes>) => ({
+	checkUserSession: () => dispatch(checkUserSessionAction()),
+});
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type AppProps = ConnectedProps<typeof connector>;
 

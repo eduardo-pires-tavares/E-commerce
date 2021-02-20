@@ -1,22 +1,8 @@
-import { UsersTypes, UserActionTypes, UserType, User } from "./types";
+import { UsersTypes, UserActionTypes, User } from "./types";
 
 export const googleSignInLoadingAction = (): UserActionTypes => {
 	return {
 		type: UsersTypes.GOOGLE_SIGNIN_LOADING,
-	};
-};
-
-export const googleSignInSuccessAction = (data: UserType): UserActionTypes => {
-	return {
-		type: UsersTypes.GOOGLE_SIGNIN_SUCCESS,
-		payload: data,
-	};
-};
-
-export const googleSignInErrorAction = (errorMessage: string): UserActionTypes => {
-	return {
-		type: UsersTypes.GOOGLE_SIGNIN_ERROR,
-		payload: errorMessage,
 	};
 };
 
@@ -27,16 +13,16 @@ export const emailSignInLoadingAction = (data: any): UserActionTypes => {
 	};
 };
 
-export const emailSignInSuccessAction = (data: UserType): UserActionTypes => {
+export const signInSucessAction = (data: User | null): UserActionTypes => {
 	return {
-		type: UsersTypes.EMAIL_SIGNIN_SUCCESS,
+		type: UsersTypes.SIGN_IN_SUCCESS,
 		payload: data,
 	};
 };
 
-export const emailSignInErrorAction = (errorMessage: string): UserActionTypes => {
+export const signInErrorAction = (errorMessage: string): UserActionTypes => {
 	return {
-		type: UsersTypes.EMAIL_SIGNIN_ERROR,
+		type: UsersTypes.SIGN_IN_ERROR,
 		payload: errorMessage,
 	};
 };
@@ -90,5 +76,11 @@ export const signUpErrorAction = (errorMessage: string): UserActionTypes => {
 	return {
 		type: UsersTypes.SIGN_UP_ERROR,
 		payload: errorMessage,
+	};
+};
+
+export const checkUserSessionAction = (): UserActionTypes => {
+	return {
+		type: UsersTypes.CHECK_USER_SESSION,
 	};
 };

@@ -1,12 +1,10 @@
 import { takeLatest, put, all, call } from "redux-saga/effects";
-import { auth, googleProvider, createUserProfileDocument } from "../../firebase";
+import { auth, googleProvider, createUserProfileDocument, getCurrentUser } from "../../firebase";
 import {
-	googleSignInErrorAction,
-	googleSignInSuccessAction,
+	signInSucessAction,
+	signInErrorAction,
 	signOutSuccessAction,
 	signOutErrorAction,
-	emailSignInSuccessAction,
-	emailSignInErrorAction,
 	signUpSuccessAction,
 	signUpErrorAction,
 } from "./actions";
@@ -17,14 +15,10 @@ export function* signInWithGoogle() {
 	try {
 		const res: firebase.auth.UserCredential = yield auth.signInWithPopup(googleProvider);
 		const { user } = res;
-		const userRef: firebase.firestore.DocumentReference<firebase.firestore.DocumentData> = yield createUserProfileDocument(
-			user,
-			null,
-		);
-		const userSnapshot: firebase.firestore.DocumentSnapshot<firebase.firestore.DocumentData> = yield userRef.get();
-		yield put(googleSignInSuccessAction({ id: userSnapshot.id, ...userSnapshot.data() }));
+
+		yield getSnapshotFromUserAuth(user);
 	} catch (error) {
-		yield put(googleSignInErrorAction(error.message));
+		yield put(signInErrorAction(error.message));
 	}
 }
 
@@ -36,14 +30,10 @@ export function* signInWithEmail({ payload: { email, password } }: emailSignInLo
 		);
 
 		const { user } = res;
-		const userRef: firebase.firestore.DocumentReference<firebase.firestore.DocumentData> = yield createUserProfileDocument(
-			user,
-			null,
-		);
-		const userSnapshot: firebase.firestore.DocumentSnapshot<firebase.firestore.DocumentData> = yield userRef.get();
-		yield put(emailSignInSuccessAction({ id: userSnapshot.id, ...userSnapshot.data() }));
+
+		yield getSnapshotFromUserAuth(user);
 	} catch (error) {
-		yield put(emailSignInErrorAction(error.message));
+		yield put(signInErrorAction(error.message));
 	}
 }
 
@@ -54,7 +44,6 @@ export function* signUp({ payload: { email, password, username } }: signUpLoadin
 			password,
 		);
 		const { user } = res;
-
 		const newUser: any = { ...user, displayName: username };
 
 		const userRef: firebase.firestore.DocumentReference<firebase.firestore.DocumentData> = yield createUserProfileDocument(
@@ -77,6 +66,29 @@ export function* signOut() {
 	}
 }
 
+export function* isUserAuthenticated() {
+	try {
+		const userAuth = getCurrentUser();
+		if (!userAuth) return;
+		yield;
+	} catch (error) {
+		yield put(signInErrorAction(error.message));
+	}
+}
+
+function* getSnapshotFromUserAuth(userAuth: firebase.User | null) {
+	try {
+		const userRef: firebase.firestore.DocumentReference<firebase.firestore.DocumentData> = yield createUserProfileDocument(
+			userAuth,
+			null,
+		);
+		const userSnapshot: firebase.firestore.DocumentSnapshot<firebase.firestore.DocumentData> = yield userRef.get();
+		yield put(signInSucessAction({ id: userSnapshot.id, ...userSnapshot.data() }));
+	} catch (error) {
+		yield put(signInErrorAction(error.message));
+	}
+}
+
 export function* onGoogleSignInStart() {
 	yield takeLatest(UsersTypes.GOOGLE_SIGNIN_LOADING, signInWithGoogle);
 }
@@ -91,6 +103,10 @@ export function* onEmailSignInStart() {
 
 export function* onSignUpStart() {
 	yield takeLatest(UsersTypes.SIGN_UP_LOADING, signUp);
+}
+
+export function* onCheckUserSession() {
+	yield takeLatest(UsersTypes.CHECK_USER_SESSION, isUserAuthenticated);
 }
 
 export function* userSagas() {

@@ -84,6 +84,15 @@ export const convertCollectionsSnapshotToMap = (
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
+export const getCurrentUser = (): Promise<firebase.User | null> => {
+	return new Promise((resolve, reject) => {
+		const unsubscribe = auth.onAuthStateChanged(userAuth => {
+			unsubscribe();
+			resolve(userAuth);
+		}, reject);
+	});
+};
+
 export const googleProvider = new firebase.auth.GoogleAuthProvider().setCustomParameters({
 	prompt: "select_account",
 });
