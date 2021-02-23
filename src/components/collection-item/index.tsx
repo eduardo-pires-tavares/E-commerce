@@ -1,4 +1,4 @@
-import { Dispatch } from "react";
+import { Dispatch, FC, useState, useEffect } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { ITEMS } from "../../store/shop/types";
 import { addToCart } from "../../store/cart/actions";
@@ -12,21 +12,33 @@ import {
 } from "./styles";
 import CustomButton from "../custom-button";
 
-const CollectionItem = ({ imageUrl, name, price, id, addToCart }: CollectionItemProps) => {
+const CollectionItem: FC<CollectionItemProps> = ({ imageUrl, name, price, id, addToCart }) => {
+	const [backgroundImage, setBackgroundImage] = useState("");
+
+	useEffect(() => {
+		const img = new Image();
+		img.src = imageUrl;
+		img.onload = () => setBackgroundImage(imageUrl);
+	}, [imageUrl]);
+
 	return (
-		<CollectionItemContainer className='collection-item'>
-			<ImageContainer backgroundImage={imageUrl} />
-			<CollectionItemFooter>
-				<Name>{name}</Name>
-				<Price>{price} $</Price>
-			</CollectionItemFooter>
-			<CustomButton
-				inverted
-				onClick={() => addToCart({ id, name, price, imageUrl, quantity: 1 })}
-			>
-				ADD TO CART
-			</CustomButton>
-		</CollectionItemContainer>
+		<>
+			{backgroundImage && (
+				<CollectionItemContainer className='collection-item'>
+					<ImageContainer backgroundImage={backgroundImage} />
+					<CollectionItemFooter>
+						<Name>{name}</Name>
+						<Price>{price} $</Price>
+					</CollectionItemFooter>
+					<CustomButton
+						inverted
+						onClick={() => addToCart({ id, name, price, imageUrl, quantity: 1 })}
+					>
+						ADD TO CART
+					</CustomButton>
+				</CollectionItemContainer>
+			)}
+		</>
 	);
 };
 
