@@ -16,7 +16,7 @@ import { checkUserSessionAction } from "./store/users/actions";
 const App: FC<AppProps> = ({ currentUser, checkUserSession }) => {
 	useEffect(() => {
 		checkUserSession();
-	}, []);
+	}, [checkUserSession]);
 
 	return (
 		<div>
