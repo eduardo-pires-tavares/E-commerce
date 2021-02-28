@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, useRef, useEffect } from "react";
+import { Dispatch, FC, useRef, useEffect } from "react";
 import {
 	CartDropdownContainer,
 	CartFooterContainer,

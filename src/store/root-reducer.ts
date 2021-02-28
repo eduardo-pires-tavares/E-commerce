@@ -17,7 +17,7 @@ export const rootReducer = combineReducers({
 const persistConfig = {
 	key: "root",
 	storage,
-	whitelist: ["cart"],
+	whitelist: ["cart", "user"],
 };
 
 export default persistReducer<any>(persistConfig, rootReducer);

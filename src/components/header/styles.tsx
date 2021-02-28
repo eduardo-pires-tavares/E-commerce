@@ -1,6 +1,17 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+type OptionsContainerProps = {
+	justifyContent?:
+		| "center"
+		| "flex-end"
+		| "flex-start"
+		| "space-around"
+		| "space-between"
+		| "space-evenly";
+	width?: string;
+};
+
 export const HeaderContainer = styled.div`
 	display: flex;
 	width: 100%;
@@ -17,20 +28,18 @@ export const HeaderContainer = styled.div`
 
 export const LogoContainer = styled(Link)`
 	height: 100%;
-	width: 70px;
-
 	@media screen and (max-with: 800px) {
 		width: 50px;
 		padding: 0;
 	}
 `;
 
-export const OptionsContainer = styled.div`
-	width: 50%;
+export const OptionsContainer = styled.div<OptionsContainerProps>`
+	width: ${props => (props.width ? props.width : "50%")};
 	height: 100%;
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: ${props => (props.justifyContent ? props.justifyContent : "")};
 
 	@media screen and (max-width: 800px) {
 		width: 80%;
@@ -38,8 +47,18 @@ export const OptionsContainer = styled.div`
 	}
 `;
 
+export const LogoWrapper = styled.div`
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	text-align: center;
+	width: 10%;
+`;
+
 export const OptionLink = styled(Link)`
-	padding: 10px 15px;
+	padding: 10px 10px;
 	color: black;
 	cursor: pointer;
 	font-size: 16px;

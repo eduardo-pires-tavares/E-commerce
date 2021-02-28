@@ -4,22 +4,37 @@ import { ApplicationState } from "../../store";
 import { Dispatch, FC } from "react";
 import { ISelectUser, selectCurrentUser } from "../../store/users/selectors";
 import { createStructuredSelector } from "reselect";
-import { LogoContainer, HeaderContainer, OptionLink, OptionsContainer } from "./styles";
+import {
+	LogoContainer,
+	HeaderContainer,
+	OptionLink,
+	OptionsContainer,
+	LogoWrapper,
+} from "./styles";
 import Cart from "../cart";
 import { UserActionTypes } from "../../store/users/types";
 import { signOutLoadingAction } from "../../store/users/actions";
+import { RiArrowDownSLine } from "react-icons/ri";
 
 const Header: FC<HeaderProps> = ({ currentUser, signOut }) => {
 	return (
 		<HeaderContainer>
-			<LogoContainer to='/'>
-				<Logo className='logo' />
-			</LogoContainer>
+			<OptionsContainer width='30%' justifyContent='space-between'>
+				<OptionLink to='/'>HOME</OptionLink>
 
-			<OptionsContainer>
-				<OptionLink to='/shop'>SHOP</OptionLink>
+				<OptionLink to='/shop'>
+					SHOP
+					<RiArrowDownSLine style={{ height: "0.7em" }} />
+				</OptionLink>
+			</OptionsContainer>
 
-				<OptionLink to='/'>COLLECTIONS</OptionLink>
+			<LogoWrapper>
+				<LogoContainer to='/'>
+					<Logo className='logo' />
+				</LogoContainer>
+			</LogoWrapper>
+
+			<OptionsContainer justifyContent='flex-end'>
 				{currentUser ? (
 					<>
 						<OptionLink to='/*'>ORDERS</OptionLink>
@@ -32,8 +47,8 @@ const Header: FC<HeaderProps> = ({ currentUser, signOut }) => {
 						SIGN IN
 					</OptionLink>
 				)}
-				<Cart />
 			</OptionsContainer>
+			<Cart />
 		</HeaderContainer>
 	);
 };

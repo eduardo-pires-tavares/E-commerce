@@ -1,11 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`* {
-	box-sizing: border;
+	box-sizing: border-box;
 }
 body {
 	font-family: "Open Sans Condensed", sans-serif;
-	padding: 40px 60px;
+	padding: 25px 20px;
 
     @media screen and (max-width:800px) {
         padding:10px;
