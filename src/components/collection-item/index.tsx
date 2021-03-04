@@ -11,15 +11,25 @@ import {
 	Price,
 } from "./styles";
 import CustomButton from "../custom-button";
+import { AiFillCheckCircle } from "react-icons/ai";
 
 const CollectionItem: FC<CollectionItemProps> = ({ imageUrl, name, price, id, addToCart }) => {
-	const [backgroundImage, setBackgroundImage] = useState("");
+	const [backgroundImage, setBackgroundImage] = useState<string>("");
+	const [addedToCartIcon, setAddedToCartIcon] = useState<boolean>(false);
 
 	useEffect(() => {
 		const img = new Image();
 		img.src = imageUrl;
 		img.onload = () => setBackgroundImage(imageUrl);
 	}, [imageUrl]);
+
+	useEffect(() => {
+		if (addedToCartIcon) {
+			setTimeout(() => {
+				setAddedToCartIcon(false);
+			}, 100);
+		}
+	}, [addedToCartIcon]);
 
 	return (
 		<>
@@ -32,9 +42,23 @@ const CollectionItem: FC<CollectionItemProps> = ({ imageUrl, name, price, id, ad
 					</CollectionItemFooter>
 					<CustomButton
 						inverted
-						onClick={() => addToCart({ id, name, price, imageUrl, quantity: 1 })}
+						onClick={() => {
+							addToCart({ id, name, price, imageUrl, quantity: 1 });
+							setAddedToCartIcon(true);
+							window.navigator.vibrate(200);
+						}}
 					>
 						ADD TO CART
+						{addedToCartIcon && (
+							<AiFillCheckCircle
+								style={{
+									color: "green",
+									position: "absolute",
+									top: "35%",
+									right: "20px",
+								}}
+							/>
+						)}
 					</CustomButton>
 				</CollectionItemContainer>
 			)}

@@ -35,4 +35,5 @@ export const Remove = styled.span`
 
 export const Name = styled.span`
 	font-size: 16px;
+	min-width: 80px;
 `;

@@ -10,11 +10,18 @@ const buttonStyles = css`
 		opacity: 0.7;
 		position: absolute;
 		top: 350px;
+		transition: all 500ms ease-in-out;
+
+		&:hover {
+			background-color: white;
+			color: black;
+			border: 1px solid black;
+		}
 
 		@media screen and (max-width: 800px) {
 			display: block;
 			opacity: 0.9;
-			min-width: 150px;
+			min-width: 145px;
 			top: 400px;
 		}
 	}
@@ -32,7 +39,9 @@ export const CollectionItemContainer = styled.div`
 	${buttonStyles}
 
 	@media screen and (max-width: 800px) {
-		width: 40vw;
+		width: 45vw;
+		padding: 0px;
+		margin: 0 auto;
 	}
 `;
 

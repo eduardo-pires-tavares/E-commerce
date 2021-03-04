@@ -22,16 +22,18 @@ const App: FC<AppProps> = ({ currentUser, checkUserSession }) => {
 		<div>
 			<GlobalStyle />
 			<Header />
-			<Switch>
-				<Route exact path='/' component={Homepage} />
-				<Route path='/shop' component={ShopPage} />
-				<Route exact path='/checkout' component={CheckoutPage} />
-				<Route
-					path='/signin'
-					exact
-					render={() => (currentUser ? <Redirect to='/' /> : <SignInAndSignUpPage />)}
-				/>
-			</Switch>
+			<div className='content'>
+				<Switch>
+					<Route exact path='/' component={Homepage} />
+					<Route path='/shop' component={ShopPage} />
+					<Route exact path='/checkout' component={CheckoutPage} />
+					<Route
+						path='/signin'
+						exact
+						render={() => (currentUser ? <Redirect to='/' /> : <SignInAndSignUpPage />)}
+					/>
+				</Switch>
+			</div>
 		</div>
 	);
 };

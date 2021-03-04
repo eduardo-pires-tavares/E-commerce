@@ -42,7 +42,6 @@ export const CartDropdownContainer = styled.div`
 	@media screen and (max-width:800px) {
 		right: 10px;
 		top: 80px;
-		width: 180px;
 	}
 `;
 
@@ -50,6 +49,7 @@ export const CartItemContainer = styled.div`
 	height: 240px;
 	display: flex;
 	flex-direction: column;
+	overflow: hidden;
 	overflow-y: scroll;
 
 	&::-webkit-scrollbar-track {

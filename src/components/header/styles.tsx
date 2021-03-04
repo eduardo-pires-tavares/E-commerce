@@ -15,10 +15,16 @@ type OptionsContainerProps = {
 export const HeaderContainer = styled.div`
 	display: flex;
 	width: 100%;
-	height: 70px;
+	height: 100px;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 25px;
+	margin-bottom: 40px;
+	position: sticky;
+	top: 0;
+	background: white;
+	z-index: 1000;
+	padding: 25px 20px;
+	background: linear-gradient(to right, rgb(253, 251, 251), rgb(235, 237, 238));
 
 	@media screen and (max-width: 800px) {
 		height: 60px;
@@ -43,7 +49,6 @@ export const OptionsContainer = styled.div<OptionsContainerProps>`
 
 	@media screen and (max-width: 800px) {
 		width: 80%;
-		justify-content: space-between;
 	}
 `;
 
@@ -62,7 +67,7 @@ export const OptionLink = styled(Link)`
 	color: black;
 	cursor: pointer;
 	font-size: 16px;
-
+	font-weight: bold;
 	@media screen and (max-width: 800px) {
 		padding: 10px 10px;
 	}

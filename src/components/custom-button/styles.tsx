@@ -52,7 +52,7 @@ export const CustomButtonContainer = styled.button<Props>`
 	width: auto;
 	height: 50px;
 	letter-spacing: 0.5px;
-
+	outline: none;
 	line-height: 50px;
 	padding: 0px 35px;
 	font-size: 15px;

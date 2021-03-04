@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { ITEMS, DATA } from "../../store/shop/types";
 import CollectionItem from "../collection-item";
@@ -7,7 +8,7 @@ type Props = DATA;
 
 type ComposedProps = Props & RouteComponentProps;
 
-const CollectionPreview = ({ items, title, history, match, routeName }: ComposedProps) => {
+const CollectionPreview: FC<ComposedProps> = ({ items, title, history, match, routeName }) => {
 	return (
 		<div>
 			<CollectionPreviewContainer>

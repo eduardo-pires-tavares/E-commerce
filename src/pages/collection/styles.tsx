@@ -18,6 +18,7 @@ export const FullCollectionContainer = styled.div`
 
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 100px;
 
 	.collection-item {
 		min-width: 335px;
