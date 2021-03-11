@@ -33,8 +33,8 @@ export const CartDropdownContainer = styled.div`
 	padding: 20px;
 	border: 1px solid black;
 	background-color: white;
-	right: 50px;
-	top: 110px;
+	right: 20px;
+	top: 100px;
 	z-index: 5;
 	transition: all 2s ease;
 	${buttonStyles}

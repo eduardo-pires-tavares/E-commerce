@@ -1,7 +1,7 @@
 import { ReactComponent as Logo } from "../../assets/logo/logo.svg";
 import { connect, ConnectedProps } from "react-redux";
 import { ApplicationState } from "../../store";
-import { Dispatch, FC } from "react";
+import { Dispatch, FC, useState } from "react";
 import { ISelectUser, selectCurrentUser } from "../../store/users/selectors";
 import { createStructuredSelector } from "reselect";
 import {
@@ -10,23 +10,39 @@ import {
 	OptionLink,
 	OptionsContainer,
 	LogoWrapper,
+	CategoriesContainer,
+	MainCategoriesNav,
 } from "./styles";
 import Cart from "../cart";
 import { UserActionTypes } from "../../store/users/types";
 import { signOutLoadingAction } from "../../store/users/actions";
-import { RiArrowDownSLine } from "react-icons/ri";
 
 const Header: FC<HeaderProps> = ({ currentUser, signOut }) => {
+	const [isShown, setIsShown] = useState<boolean>(false);
+
+	const handleHover = () => {
+		setIsShown(!isShown);
+	};
+
 	return (
 		<HeaderContainer>
-			<OptionsContainer width='30%' justifyContent='space-between'>
-				<OptionLink to='/'>HOME</OptionLink>
-
-				<OptionLink to='/shop'>
-					SHOP
-					<RiArrowDownSLine style={{ height: "0.7em" }} />
+			<OptionsContainer width='40%' justifyContent='space-evenly'>
+				<OptionLink onMouseOver={handleHover} onMouseLeave={handleHover} to='/'>
+					MEN
+				</OptionLink>
+				<OptionLink onMouseOver={handleHover} onMouseLeave={handleHover} to='/'>
+					WOMEN
+				</OptionLink>
+				<OptionLink onMouseOver={handleHover} onMouseLeave={handleHover} to='/shop'>
+					BEST SELLERS
 				</OptionLink>
 			</OptionsContainer>
+
+			{isShown && (
+				<MainCategoriesNav>
+					<CategoriesContainer></CategoriesContainer>
+				</MainCategoriesNav>
+			)}
 
 			<LogoWrapper>
 				<LogoContainer to='/'>

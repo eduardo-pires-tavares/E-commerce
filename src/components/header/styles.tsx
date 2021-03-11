@@ -63,12 +63,34 @@ export const LogoWrapper = styled.div`
 `;
 
 export const OptionLink = styled(Link)`
-	padding: 10px 10px;
+	padding: 7px 7px;
 	color: black;
 	cursor: pointer;
 	font-size: 16px;
 	font-weight: bold;
+	border-radius: 5px;
 	@media screen and (max-width: 800px) {
 		padding: 10px 10px;
 	}
+
+	transition: all 500ms ease;
+
+	&:hover {
+		background: rgba(0, 0, 0, 0.1);
+	}
+`;
+
+export const MainCategoriesNav = styled.nav`
+	position: absolute;
+	width: 40%;
+	height: 30%;
+	top: 70%;
+	left: 5%;
+	transition: all 500ms ease;
+	border: 1px solid black;
+`;
+
+export const CategoriesContainer = styled.div`
+	display: flex;
+	justify-content: space-between;
 `;

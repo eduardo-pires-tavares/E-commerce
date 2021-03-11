@@ -25,9 +25,13 @@ const CollectionItem: FC<CollectionItemProps> = ({ imageUrl, name, price, id, ad
 
 	useEffect(() => {
 		if (addedToCartIcon) {
-			setTimeout(() => {
+			const timer = setTimeout(() => {
 				setAddedToCartIcon(false);
 			}, 100);
+
+			return () => {
+				clearTimeout(timer);
+			};
 		}
 	}, [addedToCartIcon]);
 
@@ -45,7 +49,6 @@ const CollectionItem: FC<CollectionItemProps> = ({ imageUrl, name, price, id, ad
 						onClick={() => {
 							addToCart({ id, name, price, imageUrl, quantity: 1 });
 							setAddedToCartIcon(true);
-							window.navigator.vibrate(200);
 						}}
 					>
 						ADD TO CART
