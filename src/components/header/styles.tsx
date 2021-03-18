@@ -12,6 +12,10 @@ type OptionsContainerProps = {
 	width?: string;
 };
 
+type OptionsLinkProps = {
+	active?: boolean;
+};
+
 export const HeaderContainer = styled.div`
 	display: flex;
 	width: 100%;
@@ -62,7 +66,7 @@ export const LogoWrapper = styled.div`
 	width: 10%;
 `;
 
-export const OptionLink = styled(Link)`
+export const OptionLink = styled(Link)<OptionsLinkProps>`
 	padding: 7px 7px;
 	color: black;
 	cursor: pointer;
@@ -75,22 +79,32 @@ export const OptionLink = styled(Link)`
 
 	transition: all 500ms ease;
 
-	&:hover {
-		background: rgba(0, 0, 0, 0.1);
-	}
+	background: ${props => (props.active ? "rgba(0, 0, 0, 0.1)" : "")};
 `;
 
 export const MainCategoriesNav = styled.nav`
-	position: absolute;
-	width: 40%;
-	height: 30%;
-	top: 70%;
-	left: 5%;
-	transition: all 500ms ease;
-	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
 `;
 
 export const CategoriesContainer = styled.div`
 	display: flex;
+	height: 60%;
+	width: 40%;
 	justify-content: space-between;
+	align-items: flex-end;
+`;
+
+export const CategorieLink = styled(Link)`
+	color: black;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 400;
+	padding: 7px 7px;
+	&:hover {
+		font-weight: 900;
+		text-decoration: underline;
+	}
 `;
