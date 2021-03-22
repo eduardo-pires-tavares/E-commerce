@@ -6,8 +6,8 @@ type Props = {
 
 export const StyledBurger = styled.button<Props>`
 	position: absolute;
-	top: 5%;
-	left: 2rem;
+	top: 20%;
+	left: 1rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -18,9 +18,14 @@ export const StyledBurger = styled.button<Props>`
 	cursor: pointer;
 	padding: 0;
 	z-index: 10;
+	opacity: 0;
 
 	&:focus {
 		outline: none;
+	}
+
+	@media screen and (max-width: 800px) {
+		opacity: 1;
 	}
 
 	div {

@@ -5,7 +5,7 @@ type Props = {
 };
 
 export const StyledMenu = styled.nav<Props>`
-	display: flex;
+	display: none;
 	flex-direction: column;
 	justify-content: center;
 	background: rgb(235, 237, 238);
@@ -15,11 +15,12 @@ export const StyledMenu = styled.nav<Props>`
 	position: absolute;
 	top: 0;
 	left: 0;
-	transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
+	transform: ${({ open }) => (open ? "translateX(0%)" : "translateX(-100%)")};
 	transition: transform 0.3s ease-in-out;
 
 	@media (max-width: 800px) {
 		width: 100%;
+		display: flex;
 	}
 
 	a {

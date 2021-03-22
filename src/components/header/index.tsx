@@ -63,15 +63,21 @@ const Header: FC<HeaderProps> = ({ currentUser, signOut }) => {
 	return (
 		<HeaderContainer>
 			<Burguer open={open} setOpen={setOpen} />
-			<SideBarMenu open={open} />
+			<SideBarMenu
+				open={open}
+				sideBarLinks={headerLinks.map(({ name, path }) => {
+					return { name, path };
+				})}
+				setOpen={setOpen}
+			/>
 
 			<MainCategoriesNav>
 				<OptionsContainer width='40%' justifyContent='space-between'>
-					{headerLinks.map(({ name, path, active }) => {
+					{headerLinks.map(({ name, path, active }, i) => {
 						return (
 							<OptionLink
-								key={name}
-								active={active}
+								key={i}
+								active={active ? 1 : 0}
 								onMouseOver={() => {
 									toggleCategories(name);
 								}}
@@ -86,12 +92,12 @@ const Header: FC<HeaderProps> = ({ currentUser, signOut }) => {
 					{headerLinks
 						.find(({ active }) => active === true)
 						?.categories.map(categorie => (
-							<CategorieLink to='/'>{categorie}</CategorieLink>
+							<CategorieLink key={categorie} to='/'>
+								{categorie}
+							</CategorieLink>
 						))}
 				</CategoriesContainer>
 			</MainCategoriesNav>
-
-			{/* <MainCategoriesNav></MainCategoriesNav> */}
 
 			<LogoWrapper>
 				<LogoContainer to='/'>

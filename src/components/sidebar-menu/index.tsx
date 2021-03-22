@@ -1,33 +1,72 @@
-import { FC } from "react";
+import { Dispatch, FC } from "react";
+import { connect, ConnectedProps } from "react-redux";
+import { Link } from "react-router-dom";
+import { createStructuredSelector } from "reselect";
+import { ApplicationState } from "../../store";
+import { signOutLoadingAction } from "../../store/users/actions";
+import { ISelectUser, selectCurrentUser } from "../../store/users/selectors";
+import { UserActionTypes } from "../../store/users/types";
 import { StyledMenu } from "./styles";
+
+type sideBarLink = {
+	name: string;
+	path: string;
+};
 
 type Props = {
 	open: boolean;
+	sideBarLinks: sideBarLink[];
+	setOpen: (open: boolean) => void;
 };
 
-const Menu: FC<Props> = ({ open }) => {
+const Menu: FC<MenuProps> = ({ open, sideBarLinks, currentUser, signOut, setOpen }) => {
 	return (
 		<StyledMenu open={open}>
-			<a href='/'>
-				<span role='img' aria-label='about us'>
-					&#x1f481;&#x1f3fb;&#x200d;&#x2642;&#xfe0f;
-				</span>
-				About us
-			</a>
-			<a href='/'>
-				<span role='img' aria-label='price'>
-					&#x1f4b8;
-				</span>
-				Pricing
-			</a>
-			<a href='/'>
-				<span role='img' aria-label='contact'>
-					&#x1f4e9;
-				</span>
-				Contact
-			</a>
+			<>
+				{sideBarLinks.map(({ name, path }, i) => {
+					return (
+						<Link key={i} to={path} onClick={() => setOpen(!open)}>
+							{name}
+						</Link>
+					);
+				})}
+				{currentUser ? (
+					<>
+						<Link onClick={() => setOpen(!open)} to='/*'>
+							ORDERS
+						</Link>
+						<Link
+							to='/'
+							onClick={() => {
+								signOut();
+								setOpen(!open);
+							}}
+						>
+							SIGN OUT
+						</Link>
+					</>
+				) : (
+					<>
+						<Link onClick={() => setOpen(!open)} to='/signin'>
+							SIGN IN
+						</Link>
+					</>
+				)}
+			</>
 		</StyledMenu>
 	);
 };
 
-export default Menu;
+const mapStateToProps = createStructuredSelector<ApplicationState, ISelectUser>({
+	currentUser: selectCurrentUser,
+});
+
+const mapDispatchToProps = (dispatch: Dispatch<UserActionTypes>) => ({
+	signOut: () => dispatch(signOutLoadingAction()),
+});
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+type MenuProps = ConnectedProps<typeof connector> & Props;
+
+export default connector(Menu);

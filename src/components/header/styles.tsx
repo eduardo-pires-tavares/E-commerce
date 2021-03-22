@@ -13,7 +13,7 @@ type OptionsContainerProps = {
 };
 
 type OptionsLinkProps = {
-	active?: boolean;
+	active?: number;
 };
 
 export const HeaderContainer = styled.div`
@@ -52,7 +52,7 @@ export const OptionsContainer = styled.div<OptionsContainerProps>`
 	justify-content: ${props => (props.justifyContent ? props.justifyContent : "")};
 
 	@media screen and (max-width: 800px) {
-		width: 80%;
+		display: none;
 	}
 `;
 
