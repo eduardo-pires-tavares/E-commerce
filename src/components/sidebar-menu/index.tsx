@@ -22,37 +22,39 @@ type Props = {
 const Menu: FC<MenuProps> = ({ open, sideBarLinks, currentUser, signOut, setOpen }) => {
 	return (
 		<StyledMenu open={open}>
-			<>
-				{sideBarLinks.map(({ name, path }, i) => {
-					return (
-						<Link key={i} to={path} onClick={() => setOpen(!open)}>
-							{name}
-						</Link>
-					);
-				})}
-				{currentUser ? (
-					<>
-						<Link onClick={() => setOpen(!open)} to='/orders'>
-							ORDERS
-						</Link>
-						<Link
-							to='/'
-							onClick={() => {
-								signOut();
-								setOpen(!open);
-							}}
-						>
-							SIGN OUT
-						</Link>
-					</>
-				) : (
-					<>
-						<Link onClick={() => setOpen(!open)} to='/signin'>
-							SIGN IN
-						</Link>
-					</>
-				)}
-			</>
+			<div>
+				<>
+					{sideBarLinks.map(({ name, path }, i) => {
+						return (
+							<Link key={i} to={path} onClick={() => setOpen(!open)}>
+								{name}
+							</Link>
+						);
+					})}
+					{currentUser ? (
+						<>
+							<Link onClick={() => setOpen(!open)} to='/orders'>
+								ORDERS
+							</Link>
+							<Link
+								to='/'
+								onClick={() => {
+									signOut();
+									setOpen(!open);
+								}}
+							>
+								SIGN OUT
+							</Link>
+						</>
+					) : (
+						<>
+							<Link onClick={() => setOpen(!open)} to='/signin'>
+								SIGN IN
+							</Link>
+						</>
+					)}
+				</>
+			</div>
 		</StyledMenu>
 	);
 };

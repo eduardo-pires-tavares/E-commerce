@@ -38,4 +38,16 @@ export const StyledMenu = styled.nav<Props>`
 			text-align: center;
 		}
 	}
+
+	div {
+		flex-direction: column;
+		justify-content: center;
+		overflow-y: auto;
+		height: 80vh;
+
+		@media (max-width: 800px) {
+			width: 100%;
+			display: flex;
+		}
+	}
 `;
