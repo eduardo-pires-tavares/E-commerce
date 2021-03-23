@@ -10,8 +10,6 @@ import {
 	OptionLink,
 	OptionsContainer,
 	LogoWrapper,
-	CategoriesContainer,
-	CategorieLink,
 	MainCategoriesNav,
 } from "./styles";
 import Burguer from "../burguer";
@@ -31,16 +29,28 @@ const Header: FC<HeaderProps> = ({ currentUser, signOut }) => {
 	const [open, setOpen] = useState<boolean>(false);
 
 	const [headerLinks, setHeaderLinks] = useState<Array<headerLinksType>>([
-		{ name: "MEN", path: "/", categories: ["HATS", "JACKETS", "SNEAKERS"], active: false },
+		{ name: "MEN", path: "/shop/mens", categories: [], active: false },
 		{
 			name: "WOMEN",
-			path: "/",
-			categories: ["HATS", "TOPS", "BOOTS", "JACKETS", "SNEAKERS", "DRESS"],
+			path: "/shop/womens",
+			categories: [],
 			active: false,
 		},
 		{
-			name: "BEST SELLERS",
-			path: "/shop",
+			name: "SNEAKERS",
+			path: "/shop/sneakers",
+			categories: [],
+			active: false,
+		},
+		{
+			name: "JACKETS",
+			path: "/shop/jackets",
+			categories: [],
+			active: false,
+		},
+		{
+			name: "HATS",
+			path: "/shop/hats",
 			categories: [],
 			active: false,
 		},
@@ -88,7 +98,7 @@ const Header: FC<HeaderProps> = ({ currentUser, signOut }) => {
 						);
 					})}
 				</OptionsContainer>
-				<CategoriesContainer>
+				{/* <CategoriesContainer>
 					{headerLinks
 						.find(({ active }) => active === true)
 						?.categories.map(categorie => (
@@ -96,7 +106,7 @@ const Header: FC<HeaderProps> = ({ currentUser, signOut }) => {
 								{categorie}
 							</CategorieLink>
 						))}
-				</CategoriesContainer>
+				</CategoriesContainer> */}
 			</MainCategoriesNav>
 
 			<LogoWrapper>
@@ -104,7 +114,7 @@ const Header: FC<HeaderProps> = ({ currentUser, signOut }) => {
 					<Logo className='logo' />
 				</LogoContainer>
 			</LogoWrapper>
-			<OptionsContainer justifyContent='flex-end'>
+			<OptionsContainer justifyContent='center'>
 				{currentUser ? (
 					<>
 						<OptionLink to='/*'>ORDERS</OptionLink>

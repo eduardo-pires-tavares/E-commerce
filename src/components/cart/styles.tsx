@@ -14,6 +14,15 @@ export const CartIconContainer = styled.div`
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
+
+	@media screen and (max-width: 800px) {
+		right: 10px;
+		top: 80px;
+		position: absolute;
+		top: 5%;
+		right: 1rem;
+		z-index: 10;
+	}
 `;
 
 export const ItemCount = styled.span`

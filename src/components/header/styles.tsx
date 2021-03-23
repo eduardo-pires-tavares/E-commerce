@@ -27,7 +27,7 @@ export const HeaderContainer = styled.div`
 	top: 0;
 	background: white;
 	z-index: 1000;
-	padding: 25px 20px;
+	padding: 25px 60px;
 	background: linear-gradient(to right, rgb(253, 251, 251), rgb(235, 237, 238));
 
 	@media screen and (max-width: 800px) {
@@ -70,7 +70,7 @@ export const OptionLink = styled(Link)<OptionsLinkProps>`
 	padding: 7px 7px;
 	color: black;
 	cursor: pointer;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: bold;
 	border-radius: 5px;
 	@media screen and (max-width: 800px) {
@@ -79,7 +79,11 @@ export const OptionLink = styled(Link)<OptionsLinkProps>`
 
 	transition: all 500ms ease;
 
-	background: ${props => (props.active ? "rgba(0, 0, 0, 0.1)" : "")};
+	/* background: ${props => (props.active ? "rgba(0, 0, 0, 0.1)" : "")}; */
+
+	&:hover {
+		background: rgba(0, 0, 0, 0.1);
+	}
 `;
 
 export const MainCategoriesNav = styled.nav`
@@ -93,16 +97,24 @@ export const CategoriesContainer = styled.div`
 	display: flex;
 	height: 60%;
 	width: 40%;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-items: flex-end;
+
+	@media screen and (max-width: 800px) {
+		display: none;
+	}
+
+	a:first-of-type {
+		padding: 7px 20px 5px 7px;
+	}
 `;
 
 export const CategorieLink = styled(Link)`
 	color: black;
 	cursor: pointer;
-	font-size: 14px;
+	font-size: 18px;
 	font-weight: 400;
-	padding: 7px 7px;
+	padding: 5px 20px 5px 20px;
 	&:hover {
 		font-weight: 900;
 		text-decoration: underline;

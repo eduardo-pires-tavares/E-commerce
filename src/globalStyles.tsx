@@ -22,7 +22,7 @@ a {
 }
 
 .content{
-	padding: 25px 20px;
+	padding: 25px 60px;
 
 	@media screen and (max-width:800px) {
 		padding:10px;
