@@ -87,7 +87,7 @@ const Cart: FC<CartIconProps> = ({
 						onClick={() => {
 							history.push(`${match.url}checkout`);
 							toggleCart();
-							setOpen(!sideBarOpen);
+							sideBarOpen ? setOpen(!sideBarOpen) : false;
 						}}
 					>
 						Go TO CHECKOUT
