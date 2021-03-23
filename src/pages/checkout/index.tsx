@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { Dispatch, FC, useEffect } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { ApplicationState } from "../../store";
@@ -13,15 +13,25 @@ import {
 } from "./styles";
 import CheckoutItem from "../../components/checkout-item";
 import StripeCheckoutButton from "../../components/stripe";
-import { ISelectUser, selectCurrentUser } from "../../store/users/selectors";
+import { ISelectUser, isLoginFromCheckout, selectCurrentUser } from "../../store/users/selectors";
 import { RouteComponentProps, withRouter } from "react-router-dom";
+import { toggleLoginFromCartAction } from "../../store/users/actions";
+import { UserActionTypes } from "../../store/users/types";
 
 const CheckoutPage: FC<CheckoutPageProps> = ({
 	cartItems,
 	cartItemsTotalPrice,
 	currentUser,
 	history,
+	toggleLoginFromCart,
+	loginFromCheckout,
 }) => {
+	useEffect(() => {
+		if (loginFromCheckout) {
+			toggleLoginFromCart();
+		}
+	}, [loginFromCheckout, toggleLoginFromCart]);
+
 	return (
 		<CheckoutPageContainer>
 			<ItemsContainer>
@@ -38,7 +48,12 @@ const CheckoutPage: FC<CheckoutPageProps> = ({
 				{currentUser ? (
 					<StripeCheckoutButton total={cartItemsTotalPrice!} />
 				) : (
-					<RedirectToSignInPayNowButton onClick={() => history.push("/signin")}>
+					<RedirectToSignInPayNowButton
+						onClick={() => {
+							history.push("/signin");
+							toggleLoginFromCart();
+						}}
+					>
 						<span>Pay Now</span>
 					</RedirectToSignInPayNowButton>
 				)}
@@ -56,9 +71,14 @@ const mapStateToProps = createStructuredSelector<ApplicationState, ICartSelector
 	cartItems: selectCartItems,
 	cartItemsTotalPrice: selectCartTotalPrice,
 	currentUser: selectCurrentUser,
+	loginFromCheckout: isLoginFromCheckout,
 });
 
-const connector = connect(mapStateToProps);
+const mapDispatchToProps = (dispatch: Dispatch<UserActionTypes>) => ({
+	toggleLoginFromCart: () => dispatch(toggleLoginFromCartAction()),
+});
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type CheckoutPageProps = ConnectedProps<typeof connector> & RouteComponentProps;
 

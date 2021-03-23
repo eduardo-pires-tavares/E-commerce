@@ -10,6 +10,7 @@ export enum UsersTypes {
 	SIGN_UP_SUCCESS = "@users/SIGN_UP_SUCCESS",
 	SIGN_UP_ERROR = "@users/SIGN_UP_ERROR",
 	CHECK_USER_SESSION = "@users/CHECK_USER_SESSION",
+	LOGIN_FROM_CHECKOUT = "@users/LOGIN_FROM_CHECKOUT",
 }
 
 export interface User {
@@ -25,6 +26,7 @@ export interface UserState {
 	currentUser: User | null;
 	loading: boolean;
 	errorMessage: string;
+	loginFromCheckout?: boolean;
 }
 
 export interface googleSignInLoadingAction {
@@ -84,6 +86,10 @@ export interface checkUserSessionAction {
 	type: typeof UsersTypes.CHECK_USER_SESSION;
 }
 
+export interface toggleLoginFromCartAction {
+	type: typeof UsersTypes.LOGIN_FROM_CHECKOUT;
+}
+
 export type UserActionTypes =
 	| googleSignInLoadingAction
 	| emailSignInLoadingAction
@@ -95,4 +101,5 @@ export type UserActionTypes =
 	| signUpErrorAction
 	| signInSucessAction
 	| checkUserSessionAction
-	| signInErrorAction;
+	| signInErrorAction
+	| toggleLoginFromCartAction;

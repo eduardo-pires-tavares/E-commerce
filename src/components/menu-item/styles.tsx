@@ -39,6 +39,10 @@ export const ImageContainer = styled.div<ImageContainerProps>`
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-image: ${props => `url(${props.backgroundImage})`};
+
+	@media screen and (max-width: 800px) {
+		background-position: center;
+	}
 `;
 
 export const MenuItemContainer = styled.div<MenuItemContainerProps>`

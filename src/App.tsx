@@ -2,18 +2,19 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { FC, Dispatch, useEffect } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { ApplicationState } from "./store";
-import { ISelectUser, selectCurrentUser } from "./store/users/selectors";
+import { ISelectUser, isLoginFromCheckout, selectCurrentUser } from "./store/users/selectors";
 import { createStructuredSelector } from "reselect";
 import { GlobalStyle } from "./globalStyles";
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up";
 import Header from "./components/header";
 import Homepage from "./pages/homepage";
 import ShopPage from "./pages/shop";
+import Orders from "./pages/orders";
 import CheckoutPage from "./pages/checkout";
 import { UserActionTypes } from "./store/users/types";
 import { checkUserSessionAction } from "./store/users/actions";
 
-const App: FC<AppProps> = ({ currentUser, checkUserSession }) => {
+const App: FC<AppProps> = ({ currentUser, checkUserSession, loginFromCheckout }) => {
 	useEffect(() => {
 		checkUserSession();
 	}, [checkUserSession]);
@@ -28,9 +29,20 @@ const App: FC<AppProps> = ({ currentUser, checkUserSession }) => {
 					<Route path='/shop' component={ShopPage} />
 					<Route exact path='/checkout' component={CheckoutPage} />
 					<Route
+						exact
+						path='/orders'
+						render={() => (!currentUser ? <Redirect to='/' /> : <Orders />)}
+					/>
+					<Route
 						path='/signin'
 						exact
-						render={() => (currentUser ? <Redirect to='/' /> : <SignInAndSignUpPage />)}
+						render={() =>
+							currentUser ? (
+								<Redirect to={loginFromCheckout ? `/checkout` : `/`} />
+							) : (
+								<SignInAndSignUpPage />
+							)
+						}
 					/>
 				</Switch>
 			</div>
@@ -40,6 +52,7 @@ const App: FC<AppProps> = ({ currentUser, checkUserSession }) => {
 
 const mapStateToProps = createStructuredSelector<ApplicationState, ISelectUser>({
 	currentUser: selectCurrentUser,
+	loginFromCheckout: isLoginFromCheckout,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<UserActionTypes>) => ({

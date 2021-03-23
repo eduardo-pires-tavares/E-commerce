@@ -12,10 +12,6 @@ type OptionsContainerProps = {
 	width?: string;
 };
 
-type OptionsLinkProps = {
-	active?: number;
-};
-
 export const HeaderContainer = styled.div`
 	display: flex;
 	width: 100%;
@@ -33,6 +29,10 @@ export const HeaderContainer = styled.div`
 	@media screen and (max-width: 800px) {
 		height: 60px;
 		margin-bottom: 20px;
+	}
+
+	@media screen and (max-width: 1000px) {
+		padding: 25px 10px;
 	}
 `;
 
@@ -66,7 +66,7 @@ export const LogoWrapper = styled.div`
 	width: 10%;
 `;
 
-export const OptionLink = styled(Link)<OptionsLinkProps>`
+export const OptionLink = styled(Link)`
 	padding: 7px 7px;
 	color: black;
 	cursor: pointer;
@@ -79,8 +79,6 @@ export const OptionLink = styled(Link)<OptionsLinkProps>`
 
 	transition: all 500ms ease;
 
-	/* background: ${props => (props.active ? "rgba(0, 0, 0, 0.1)" : "")}; */
-
 	&:hover {
 		background: rgba(0, 0, 0, 0.1);
 	}
@@ -91,32 +89,4 @@ export const MainCategoriesNav = styled.nav`
 	flex-direction: column;
 	height: 100%;
 	width: 100%;
-`;
-
-export const CategoriesContainer = styled.div`
-	display: flex;
-	height: 60%;
-	width: 40%;
-	justify-content: flex-start;
-	align-items: flex-end;
-
-	@media screen and (max-width: 800px) {
-		display: none;
-	}
-
-	a:first-of-type {
-		padding: 7px 20px 5px 7px;
-	}
-`;
-
-export const CategorieLink = styled(Link)`
-	color: black;
-	cursor: pointer;
-	font-size: 18px;
-	font-weight: 400;
-	padding: 5px 20px 5px 20px;
-	&:hover {
-		font-weight: 900;
-		text-decoration: underline;
-	}
 `;

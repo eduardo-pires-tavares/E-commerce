@@ -19,56 +19,36 @@ import { UserActionTypes } from "../../store/users/types";
 import { signOutLoadingAction } from "../../store/users/actions";
 
 const Header: FC<HeaderProps> = ({ currentUser, signOut }) => {
-	type headerLinksType = {
+	type HeaderLinksType = {
 		name: string;
 		path: string;
-		categories: string[];
-		active: boolean;
 	};
 
 	const [open, setOpen] = useState<boolean>(false);
 
-	const [headerLinks, setHeaderLinks] = useState<Array<headerLinksType>>([
-		{ name: "MEN", path: "/shop/mens", categories: [], active: false },
+	const headerLinks: HeaderLinksType[] = [
+		{ name: "MEN", path: "/shop/mens" },
 		{
 			name: "WOMEN",
 			path: "/shop/womens",
-			categories: [],
-			active: false,
 		},
 		{
 			name: "SNEAKERS",
 			path: "/shop/sneakers",
-			categories: [],
-			active: false,
 		},
 		{
 			name: "JACKETS",
 			path: "/shop/jackets",
-			categories: [],
-			active: false,
 		},
 		{
 			name: "HATS",
 			path: "/shop/hats",
-			categories: [],
-			active: false,
 		},
-	]);
-
-	const toggleCategories = (currentLinkName: string) => {
-		setHeaderLinks(
-			headerLinks.map(link => {
-				if (link.active === true) {
-					link.active = false;
-				}
-				if (link.name === currentLinkName) {
-					link.active = true;
-				}
-				return link;
-			}),
-		);
-	};
+		{
+			name: "BEST SELLERS",
+			path: "/shop",
+		},
+	];
 
 	return (
 		<HeaderContainer>
@@ -82,31 +62,15 @@ const Header: FC<HeaderProps> = ({ currentUser, signOut }) => {
 			/>
 
 			<MainCategoriesNav>
-				<OptionsContainer width='40%' justifyContent='space-between'>
-					{headerLinks.map(({ name, path, active }, i) => {
+				<OptionsContainer width='60%' justifyContent='space-between'>
+					{headerLinks.map(({ name, path }, i) => {
 						return (
-							<OptionLink
-								key={i}
-								active={active ? 1 : 0}
-								onMouseOver={() => {
-									toggleCategories(name);
-								}}
-								to={path}
-							>
+							<OptionLink key={i} to={path}>
 								{name}
 							</OptionLink>
 						);
 					})}
 				</OptionsContainer>
-				{/* <CategoriesContainer>
-					{headerLinks
-						.find(({ active }) => active === true)
-						?.categories.map(categorie => (
-							<CategorieLink key={categorie} to='/'>
-								{categorie}
-							</CategorieLink>
-						))}
-				</CategoriesContainer> */}
 			</MainCategoriesNav>
 
 			<LogoWrapper>
@@ -114,10 +78,10 @@ const Header: FC<HeaderProps> = ({ currentUser, signOut }) => {
 					<Logo className='logo' />
 				</LogoContainer>
 			</LogoWrapper>
-			<OptionsContainer justifyContent='center'>
+			<OptionsContainer justifyContent='space-around'>
 				{currentUser ? (
 					<>
-						<OptionLink to='/*'>ORDERS</OptionLink>
+						<OptionLink to='/orders'>ORDERS</OptionLink>
 						<OptionLink as='div' className='option' onClick={() => signOut()}>
 							SIGN OUT
 						</OptionLink>

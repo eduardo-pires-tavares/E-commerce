@@ -84,3 +84,9 @@ export const checkUserSessionAction = (): UserActionTypes => {
 		type: UsersTypes.CHECK_USER_SESSION,
 	};
 };
+
+export const toggleLoginFromCartAction = (): UserActionTypes => {
+	return {
+		type: UsersTypes.LOGIN_FROM_CHECKOUT,
+	};
+};

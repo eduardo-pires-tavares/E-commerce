@@ -15,6 +15,8 @@ const handleToken = (token: any, clearCart: () => void) => {
 };
 
 const StripeCheckoutButton = ({ total, clearCart }: StripeCheckoutProps) => {
+	const logoUrl = "https://i.ibb.co/80K7n9Y/logo.png";
+
 	if (!total) {
 		return null;
 	}
@@ -30,7 +32,7 @@ const StripeCheckoutButton = ({ total, clearCart }: StripeCheckoutProps) => {
 			ComponentClass='div'
 			description={`Your total is $${total}`}
 			amount={stripePrice}
-			image='../../assets/logo/logo.png'
+			image={logoUrl}
 			panelLabel='Pay Now '
 			token={token => handleToken(token, clearCart)}
 			stripeKey={stripePublishableKey}

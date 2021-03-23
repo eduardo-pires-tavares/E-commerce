@@ -5,6 +5,7 @@ const INITIAL_STATE: UserState = {
 	currentUser: null,
 	errorMessage: "",
 	loading: false,
+	loginFromCheckout: false,
 };
 
 const userReducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
@@ -69,6 +70,14 @@ const userReducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
 				...state,
 				loading: false,
 				errorMessage: action.payload,
+			};
+		}
+		case UsersTypes.LOGIN_FROM_CHECKOUT: {
+			const { loginFromCheckout } = state;
+
+			return {
+				...state,
+				loginFromCheckout: !loginFromCheckout,
 			};
 		}
 		default:

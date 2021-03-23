@@ -20,4 +20,7 @@ const SignInAndSignUpPage = () => {
 		</Wrapper>
 	);
 };
-export default connect(mapStateToProps)(Loading(SignInAndSignUpPage));
+
+const connector = connect(mapStateToProps);
+
+export default connector(Loading(SignInAndSignUpPage));

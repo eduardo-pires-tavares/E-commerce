@@ -32,7 +32,7 @@ const Menu: FC<MenuProps> = ({ open, sideBarLinks, currentUser, signOut, setOpen
 				})}
 				{currentUser ? (
 					<>
-						<Link onClick={() => setOpen(!open)} to='/*'>
+						<Link onClick={() => setOpen(!open)} to='/orders'>
 							ORDERS
 						</Link>
 						<Link
