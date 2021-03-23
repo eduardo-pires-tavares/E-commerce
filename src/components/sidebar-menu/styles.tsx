@@ -41,7 +41,7 @@ export const StyledMenu = styled.nav<Props>`
 
 	div {
 		flex-direction: column;
-		justify-content: center;
+		justify-content: flex-start;
 		overflow-y: auto;
 		height: 80vh;
 
