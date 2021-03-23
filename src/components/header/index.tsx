@@ -92,7 +92,7 @@ const Header: FC<HeaderProps> = ({ currentUser, signOut }) => {
 					</OptionLink>
 				)}
 			</OptionsContainer>
-			<Cart />
+			<Cart setOpen={setOpen} sideBarOpen={open} />
 		</HeaderContainer>
 	);
 };

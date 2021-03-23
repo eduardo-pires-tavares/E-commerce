@@ -32,6 +32,8 @@ const Cart: FC<CartIconProps> = ({
 	cartItemsTotalPrice,
 	match,
 	history,
+	setOpen,
+	sideBarOpen,
 }) => {
 	const wrapper = useRef<HTMLDivElement>(null);
 	const dropdown = useRef<HTMLDivElement>(null);
@@ -85,6 +87,7 @@ const Cart: FC<CartIconProps> = ({
 						onClick={() => {
 							history.push(`${match.url}checkout`);
 							toggleCart();
+							setOpen(!sideBarOpen);
 						}}
 					>
 						Go TO CHECKOUT
@@ -108,6 +111,11 @@ const mapDispatchToProps = (dispatch: Dispatch<CartActionTypes>) => ({
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-type CartIconProps = ConnectedProps<typeof connector> & RouteComponentProps;
+type Props = {
+	sideBarOpen: boolean;
+	setOpen: (open: boolean) => void;
+};
+
+type CartIconProps = ConnectedProps<typeof connector> & RouteComponentProps & Props;
 
 export default withRouter(connector(Cart));
