@@ -9,8 +9,10 @@ import SignInAndSignUpPage from "./pages/sign-in-and-sign-up";
 import Header from "./components/header";
 import Homepage from "./pages/homepage";
 import ShopPage from "./pages/shop";
+import Details from "./pages/details";
 import Orders from "./pages/orders";
 import CheckoutPage from "./pages/checkout";
+
 import { UserActionTypes } from "./store/users/types";
 import { checkUserSessionAction } from "./store/users/actions";
 
@@ -27,6 +29,7 @@ const App: FC<AppProps> = ({ currentUser, checkUserSession, loginFromCheckout })
 				<Switch>
 					<Route exact path='/' component={Homepage} />
 					<Route path='/shop' component={ShopPage} />
+					<Route path='/details/:collection/:itemName' component={Details} />
 					<Route exact path='/checkout' component={CheckoutPage} />
 					<Route
 						exact

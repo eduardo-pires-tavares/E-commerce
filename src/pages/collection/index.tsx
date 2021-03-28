@@ -17,7 +17,14 @@ const Collection = ({ collection }: CollectionProps) => {
 				<Title>{collection?.title.toUpperCase()}</Title>
 				<FullCollectionContainer>
 					{collection?.items?.map(({ id, ...otherComponentProps }: ITEMS) => {
-						return <CollectionItem key={id} id={id} {...otherComponentProps} />;
+						return (
+							<CollectionItem
+								collection={collection?.routeName}
+								key={id}
+								id={id}
+								{...otherComponentProps}
+							/>
+						);
 					})}
 				</FullCollectionContainer>
 			</CollectionContainer>

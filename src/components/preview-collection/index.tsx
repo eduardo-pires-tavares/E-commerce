@@ -19,7 +19,14 @@ const CollectionPreview: FC<ComposedProps> = ({ items, title, history, match, ro
 					{items
 						.filter((_, idx: number) => idx < 4)
 						.map(({ id, ...otherComponentProps }: ITEMS) => {
-							return <CollectionItem key={id} id={id} {...otherComponentProps} />;
+							return (
+								<CollectionItem
+									collection={routeName}
+									key={id}
+									id={id}
+									{...otherComponentProps}
+								/>
+							);
 						})}
 				</Preview>
 			</CollectionPreviewContainer>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 interface ImageContainerProps {
@@ -10,13 +11,6 @@ const buttonStyles = css`
 		opacity: 0.7;
 		position: absolute;
 		top: 350px;
-		transition: all 500ms ease-in-out;
-
-		&:hover {
-			background-color: white;
-			color: black;
-			border: 1px solid black;
-		}
 
 		@media screen and (max-width: 800px) {
 			display: block;
@@ -93,4 +87,12 @@ export const Name = styled.span`
 export const Price = styled.span`
 	text-align: end;
 	width: 25%;
+`;
+
+export const ViewMore = styled(Link)`
+	color: black;
+
+	&:hover {
+		color: white;
+	}
 `;
