@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 type SizeProps = {
@@ -22,6 +23,21 @@ export const GoBackContainer = styled.div`
 	top: 10px;
 	right: 10px;
 	cursor: pointer;
+	z-index: 100;
+`;
+
+export const GoBack = styled(Link)`
+	display: flex;
+	color: black;
+	padding: 5px;
+	border: 1px solid black;
+	border-radius: 50%;
+	transition: all 100ms ease;
+
+	&:hover {
+		background: black;
+		color: white;
+	}
 `;
 
 export const DetailWrapper = styled.div`

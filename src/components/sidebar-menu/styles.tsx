@@ -45,6 +45,22 @@ export const StyledMenu = styled.nav<Props>`
 		overflow-y: auto;
 		height: 80vh;
 
+		&::-webkit-scrollbar-track {
+			box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+			background-color: #f5f5f5;
+		}
+
+		&::-webkit-scrollbar {
+			width: 5px;
+			background-color: #f5f5f5;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background-color: #000000;
+			border: 1px solid #000000;
+		}
+
 		@media (max-width: 800px) {
 			width: 100%;
 			display: flex;

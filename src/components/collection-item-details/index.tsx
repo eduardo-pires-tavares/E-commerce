@@ -8,6 +8,7 @@ import {
 	SizeInfo,
 	ButtonContainer,
 	GoBackContainer,
+	GoBack,
 } from "./styles";
 import { RiArrowGoBackLine } from "react-icons/ri";
 import { Dispatch, FC, useState } from "react";
@@ -17,7 +18,6 @@ import { CartActionTypes, CartItem } from "../../store/cart/types";
 import { addToCart } from "../../store/cart/actions";
 import { ApplicationState } from "../../store";
 import { selectCollection } from "../../store/shop/selectors";
-import { Link } from "react-router-dom";
 
 const CollectionItemDetail: FC<CollectionItemDetailProps> = ({
 	addItemToCart,
@@ -43,12 +43,9 @@ const CollectionItemDetail: FC<CollectionItemDetailProps> = ({
 	return (
 		<DetailCard>
 			<GoBackContainer>
-				<Link
-					style={{ color: "black" }}
-					to={location.state?.from ? location.state?.from : "/shop"}
-				>
+				<GoBack to={location.state?.from ? location.state?.from : "/shop"}>
 					<RiArrowGoBackLine />
-				</Link>
+				</GoBack>
 			</GoBackContainer>
 			<ImageContainer style={{ border: "1px solid black" }} backgroundImage={imageUrl!} />
 			<DetailWrapper>

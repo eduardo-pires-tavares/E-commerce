@@ -12,6 +12,10 @@ const buttonStyles = css`
 		position: absolute;
 		top: 350px;
 
+		&:hover a {
+			color: white;
+		}
+
 		@media screen and (max-width: 800px) {
 			display: block;
 			opacity: 0.9;
@@ -91,8 +95,4 @@ export const Price = styled.span`
 
 export const ViewMore = styled(Link)`
 	color: black;
-
-	&:hover {
-		color: white;
-	}
 `;
