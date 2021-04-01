@@ -52,7 +52,7 @@ export const StyledMenu = styled.nav<Props>`
 		}
 
 		&::-webkit-scrollbar {
-			width: 5px;
+			width: 2px;
 			background-color: #f5f5f5;
 		}
 

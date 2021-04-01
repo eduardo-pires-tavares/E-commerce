@@ -8,6 +8,15 @@ export const GlobalStyle = createGlobalStyle`* {
 
 *:focus {
     outline:0;
+};
+
+*{
+	user-select: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-webkit-tap-highlight-color: transparent;
 }
 
 

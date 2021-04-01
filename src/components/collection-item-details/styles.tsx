@@ -16,6 +16,20 @@ export const DetailCard = styled.div`
 	padding: 10px;
 	border: 1px solid black;
 	position: relative;
+
+	@media screen and (max-width: 1100px) {
+		width: 800px;
+	}
+
+	@media screen and (max-width: 800px) {
+		display: flex;
+		margin: unset;
+		height: 900px;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		padding: 5px;
+	}
 `;
 
 export const GoBackContainer = styled.div`
@@ -24,6 +38,10 @@ export const GoBackContainer = styled.div`
 	right: 10px;
 	cursor: pointer;
 	z-index: 100;
+
+	@media screen and (max-width: 800px) {
+		display: none;
+	}
 `;
 
 export const GoBack = styled(Link)`
@@ -47,6 +65,15 @@ export const DetailWrapper = styled.div`
 	height: 100%;
 	position: relative;
 	justify-content: center;
+
+	@media screen and (max-width: 1100px) {
+		width: 60%;
+	}
+
+	@media screen and (max-width: 800px) {
+		width: 100%;
+		justify-content: flex-start;
+	}
 `;
 
 export const TopInfo = styled.div`
@@ -59,6 +86,12 @@ export const TopInfo = styled.div`
 	word-spacing: 5px;
 	letter-spacing: 5px;
 	border-bottom: 1px solid lightgray;
+
+	@media screen and (max-width: 800px) {
+		height: 25%;
+		line-height: 60px;
+		padding-bottom: 10px;
+	}
 `;
 
 export const SizeInfo = styled.div`
@@ -68,6 +101,10 @@ export const SizeInfo = styled.div`
 	height: 20%;
 	align-items: center;
 	align-self: center;
+	@media screen and (max-width: 800px) {
+		width: 95%;
+		height: 25%;
+	}
 `;
 
 export const Size = styled.button<SizeProps>`
@@ -93,4 +130,8 @@ export const ButtonContainer = styled.div`
 	align-items: center;
 	align-self: center;
 	border-top: 1px solid lightgray;
+
+	@media screen and (max-width: 800px) {
+		height: 40%;
+	}
 `;
