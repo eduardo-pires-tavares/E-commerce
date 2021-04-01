@@ -95,4 +95,7 @@ export const Price = styled.span`
 
 export const ViewMore = styled(Link)`
 	color: black;
+	display: flex;
+	width: 100%;
+	height: 95%;
 `;
