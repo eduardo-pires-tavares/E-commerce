@@ -12,6 +12,7 @@ export interface CartItem {
 	id?: number;
 	price?: number;
 	imageUrl?: string;
+	size?: string;
 }
 export interface Cart {
 	open: boolean;

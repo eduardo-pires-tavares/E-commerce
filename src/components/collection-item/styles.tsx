@@ -12,7 +12,7 @@ const buttonStyles = css`
 		position: absolute;
 		top: 350px;
 
-		&:hover a {
+		&:active a {
 			color: white;
 		}
 
@@ -98,4 +98,5 @@ export const ViewMore = styled(Link)`
 	display: flex;
 	width: 100%;
 	height: 95%;
+	justify-content: center;
 `;

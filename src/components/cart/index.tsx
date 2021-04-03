@@ -67,7 +67,12 @@ const Cart: FC<CartIconProps> = ({
 					<CartItemContainer>
 						{cartItems?.length ? (
 							cartItems?.map((item: CartItem) => {
-								return <CartItemComponent key={item.id} cartItem={item} />;
+								return (
+									<CartItemComponent
+										key={`${item.id!}${item.size!}`}
+										cartItem={item}
+									/>
+								);
 							})
 						) : (
 							<EmptyMessage>Your cart is empty</EmptyMessage>

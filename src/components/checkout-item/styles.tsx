@@ -22,7 +22,7 @@ export const CheckoutItemContainer = styled.div`
 	flex-direction: column;
 	max-width: 210px;
 	min-width: 210px;
-	max-height: 350px;
+	max-height: 360px;
 	margin: 30px 30px;
 	font-size: 20px;
 	align-items: flex-start;
@@ -46,7 +46,7 @@ export const ItemContainer = styled.div`
 
 export const NameContainer = styled.div`
 	font-weight: 700;
-	margin: 10px 0;
+	margin: 5px 0;
 `;
 
 export const PriceQuantityContainer = styled.div`
@@ -57,13 +57,13 @@ export const PriceQuantityContainer = styled.div`
 `;
 
 export const Increase = styled.span`
-	margin-right: 5px;
+	margin-left: 2px;
 	cursor: pointer;
 	user-select: none;
 `;
 
 export const Decrease = styled.span`
-	margin-left: 5px;
+	margin-right: 2px;
 	cursor: pointer;
 	user-select: none;
 `;

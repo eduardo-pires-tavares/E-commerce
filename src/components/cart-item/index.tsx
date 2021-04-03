@@ -5,7 +5,7 @@ import { clearItemFromCart } from "../../store/cart/actions";
 import { CartItemContainer, ActionContainer, ItemDetailsContainer, Name, Remove } from "./styles";
 
 const CartItemComponent: FC<CartItemProps> = ({ cartItem, clearItemFromCart }) => {
-	const { imageUrl, name, price, quantity } = cartItem;
+	const { imageUrl, name, price, quantity, size } = cartItem;
 	return (
 		<CartItemContainer>
 			<img src={imageUrl} alt='item'></img>
@@ -17,6 +17,7 @@ const CartItemComponent: FC<CartItemProps> = ({ cartItem, clearItemFromCart }) =
 				<span>
 					{quantity} x {price}$
 				</span>
+				<span>Size:{size}</span>
 			</ItemDetailsContainer>
 		</CartItemContainer>
 	);

@@ -3,7 +3,7 @@ import { OrdersContainer } from "./styles";
 const Orders = () => {
 	return (
 		<OrdersContainer>
-			<h3>Under Construction</h3>
+			<h3>Orders Under Construction</h3>
 		</OrdersContainer>
 	);
 };

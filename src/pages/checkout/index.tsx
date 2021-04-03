@@ -36,7 +36,7 @@ const CheckoutPage: FC<CheckoutPageProps> = ({
 		<CheckoutPageContainer>
 			<ItemsContainer>
 				{cartItems?.map(item => {
-					return <CheckoutItem key={item.id} cartItem={item} />;
+					return <CheckoutItem key={`${item.id!}${item.size!}`} cartItem={item} />;
 				})}
 			</ItemsContainer>
 			<PriceContainer>

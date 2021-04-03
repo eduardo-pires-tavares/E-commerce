@@ -72,13 +72,29 @@ const CollectionItemDetail: FC<CollectionItemDetailProps> = ({
 				</SizeInfo>
 				<ButtonContainer>
 					<CustomButton
-						onClick={() => addItemToCart({ imageUrl, name, price, id, quantity: 1 })}
+						onClick={() =>
+							addItemToCart({
+								imageUrl,
+								name,
+								price,
+								id,
+								size: selectedSize,
+								quantity: 1,
+							})
+						}
 					>
 						ADD TO CART
 					</CustomButton>
 					<CustomButton
 						onClick={() => {
-							addItemToCart({ imageUrl, name, price, id, quantity: 1 });
+							addItemToCart({
+								imageUrl,
+								name,
+								price,
+								id,
+								size: selectedSize,
+								quantity: 1,
+							});
 							history.push("/checkout");
 						}}
 					>

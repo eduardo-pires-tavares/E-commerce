@@ -11,7 +11,7 @@ type Props = {
 const handleToken = (token: any, clearCart: () => void) => {
 	console.log(token);
 	clearCart();
-	alert("Payment Successfull");
+	window.location.href = "/orders";
 };
 
 const StripeCheckoutButton = ({ total, clearCart }: StripeCheckoutProps) => {

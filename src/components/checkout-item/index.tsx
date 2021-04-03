@@ -19,7 +19,7 @@ const CheckoutItem: FC<CheckoutItemProps> = ({
 	removeItemFromCart,
 	addItemToCart,
 }) => {
-	const { imageUrl, name, price, quantity } = cartItem;
+	const { imageUrl, name, price, quantity, size } = cartItem;
 
 	return (
 		<CheckoutItemContainer>
@@ -59,7 +59,11 @@ const CheckoutItem: FC<CheckoutItemProps> = ({
 					</>
 				</PriceQuantityContainer>
 				<>
-					<span>
+					<span style={{ marginBottom: "5px" }}>
+						<strong>Size: </strong>
+						{size}
+					</span>
+					<span style={{ marginBottom: "5px" }}>
 						<strong>Sub-Total: </strong>
 						{price! * quantity!} $
 					</span>

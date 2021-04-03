@@ -35,6 +35,7 @@ export const ItemsContainer = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	border-bottom: 1px solid black;
+	padding-bottom: 10px;
 `;
 
 export const PriceContainer = styled.div`
