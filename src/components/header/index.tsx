@@ -74,7 +74,7 @@ const Header: FC<HeaderProps> = ({ currentUser, signOut }) => {
 			</MainCategoriesNav>
 
 			<LogoWrapper>
-				<LogoContainer to='/'>
+				<LogoContainer onClick={() => setOpen(false)} to='/'>
 					<Logo className='logo' />
 				</LogoContainer>
 			</LogoWrapper>
