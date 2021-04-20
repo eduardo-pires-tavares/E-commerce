@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "dgSpecHash": "w/2UbYSGdNhvAMJd2KlmetkTPPCqlLrN+QsC4ow4yuIv6n47M7nY119zl1Ez/0VtZTXU/9g6o7d7vDkO3a+dQg==",
+  "success": true,
+  "projectFilePath": "/home/ejstavares/E-commerce/server/services/Lotus.Catalog.Api/Lotus.Catalog.Api.csproj",
+  "expectedPackageFiles": [
+    "/home/ejstavares/.nuget/packages/dnsclient/1.4.0/dnsclient.1.4.0.nupkg.sha512",
+    "/home/ejstavares/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "/home/ejstavares/.nuget/packages/microsoft.netcore.platforms/2.1.2/microsoft.netcore.platforms.2.1.2.nupkg.sha512",
+    "/home/ejstavares/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/home/ejstavares/.nuget/packages/mongodb.bson/2.12.2/mongodb.bson.2.12.2.nupkg.sha512",
+    "/home/ejstavares/.nuget/packages/mongodb.driver/2.12.2/mongodb.driver.2.12.2.nupkg.sha512",
+    "/home/ejstavares/.nuget/packages/mongodb.driver.core/2.12.2/mongodb.driver.core.2.12.2.nupkg.sha512",
+    "/home/ejstavares/.nuget/packages/mongodb.libmongocrypt/1.2.1/mongodb.libmongocrypt.1.2.1.nupkg.sha512",
+    "/home/ejstavares/.nuget/packages/sharpcompress/0.23.0/sharpcompress.0.23.0.nupkg.sha512",
+    "/home/ejstavares/.nuget/packages/swashbuckle.aspnetcore/5.6.3/swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "/home/ejstavares/.nuget/packages/swashbuckle.aspnetcore.swagger/5.6.3/swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "/home/ejstavares/.nuget/packages/swashbuckle.aspnetcore.swaggergen/5.6.3/swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "/home/ejstavares/.nuget/packages/swashbuckle.aspnetcore.swaggerui/5.6.3/swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
+    "/home/ejstavares/.nuget/packages/system.buffers/4.5.1/system.buffers.4.5.1.nupkg.sha512",
+    "/home/ejstavares/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
+    "/home/ejstavares/.nuget/packages/system.text.encoding.codepages/4.5.1/system.text.encoding.codepages.4.5.1.nupkg.sha512"
+  ],
+  "logs": []
+}
