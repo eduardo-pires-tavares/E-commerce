@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Lotus.Catalog.Api.Interfaces.Generic;
+using Lotus.Catalog.Api.Interfaces.Products;
+using Lotus.Catalog.Api.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+
 
 namespace Lotus.Catalog.Api
 {
@@ -27,7 +31,14 @@ namespace Lotus.Catalog.Api
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
+            services.AddScoped<ICatalogContext,CatalogContext>();
+            services.AddScoped<IProductsRepository,ProductsRepository>();
+
+
+            services.AddControllers()
+                .AddNewtonsoftJson(options => options.UseMemberCasing());
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Lotus.Catalog.Api", Version = "v1" });

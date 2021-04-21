@@ -1,6 +1,6 @@
 using Lotus.Catalog.Api.Data;
 using Lotus.Catalog.Api.Entities;
-using Lotus.Catalog.Api.Interfaces;
+using Lotus.Catalog.Api.Interfaces.Generic;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using System;
