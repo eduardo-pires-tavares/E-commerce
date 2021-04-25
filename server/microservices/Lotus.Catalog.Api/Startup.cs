@@ -31,7 +31,6 @@ namespace Lotus.Catalog.Api
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
             services.AddScoped<ICatalogContext,CatalogContext>();
             services.AddScoped<IProductsRepository,ProductsRepository>();
 

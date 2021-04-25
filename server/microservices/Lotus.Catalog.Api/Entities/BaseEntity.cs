@@ -2,7 +2,7 @@ using System;
 
 namespace Lotus.Catalog.Api.Entities
 {
-   public abstract class BaseEntity
+    public abstract class BaseEntity
     {
         public bool IsValid { get; set; }
         public DateTime CreatedDate { get; set; }

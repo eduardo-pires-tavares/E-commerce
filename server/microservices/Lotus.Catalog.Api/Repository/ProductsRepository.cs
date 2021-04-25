@@ -11,7 +11,8 @@ namespace Lotus.Catalog.Api.Repository
     {
         private readonly ICatalogContext _context;
 
-        public ProductsRepository(ICatalogContext context){
+        public ProductsRepository(ICatalogContext context)
+        {
             _context = context;
         }
 
@@ -23,37 +24,37 @@ namespace Lotus.Catalog.Api.Repository
         {
             var product = await GetByIdAsync(id);
             product.IsValid = false;
-            await UpdateAsync(id,product);
+            await UpdateAsync(id, product);
         }
 
         public async Task<IEnumerable<Product>> GetAllAsync()
         {
-             return await _context.Products.Find(p => true).ToListAsync();
+            return await _context.Products.Find(p => true).ToListAsync();
         }
 
         public async Task<Product> GetByIdAsync(string id)
         {
-            FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(p=>p.Id,id);
+            FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(p => p.Id, id);
 
             return await _context.Products.Find(filter).FirstAsync();
         }
 
         public async Task UpdateAsync(string id, Product entity)
         {
-            await _context.Products.ReplaceOneAsync(filter: p=>p.Id.Equals(id),replacement:entity);
+            await _context.Products.ReplaceOneAsync(filter: p => p.Id.Equals(id), replacement: entity, new ReplaceOptions() { IsUpsert = true });
         }
 
 
         public async Task<IEnumerable<Product>> GetProductsByCategory(string categorieName)
         {
-            FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(p=>p.Category.ToLower(),categorieName.ToLower());
+            FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(p => p.Category.ToLower(), categorieName.ToLower());
 
             return await _context.Products.Find(filter).ToListAsync();
         }
 
         public async Task<IEnumerable<Product>> GetProductsByName(string name)
         {
-            FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(p=>p.Name.ToLower(),name.ToLower());
+            FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(p => p.Name.ToLower(), name.ToLower());
 
             return await _context.Products.Find(filter).ToListAsync();
         }

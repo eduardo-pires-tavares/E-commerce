@@ -1,0 +1,265 @@
+2021-04-25 01:16:20.2444 Lotus.Catalog.Api.Program: init main
+2021-04-25 01:16:20.5813 Microsoft.AspNetCore.Hosting.Diagnostics: Application startup exceptionSystem.InvalidOperationException: The following errors occurred with attribute routing information:
+
+Error 1:
+For action: 'Lotus.Api.Catalog.Controller.CatalogController.GetProductByCategory (Lotus.Catalog.Api)'
+Error: While processing template 'api/v1/[controller]/[action/{category}]', a replacement value for the token 'action/{category}' could not be found. Available tokens: 'action, controller'. To use a '[' or ']' as a literal string in a route or within a constraint, use '[[' or ']]' instead.
+   at Microsoft.AspNetCore.Mvc.ApplicationModels.ApplicationModelFactory.Flatten[TResult](ApplicationModel application, Func`5 flattener)
+   at Microsoft.AspNetCore.Mvc.ApplicationModels.ControllerActionDescriptorBuilder.Build(ApplicationModel application)
+   at Microsoft.AspNetCore.Mvc.ApplicationModels.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.ApplicationModels.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.Initialize()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.GetChangeToken()
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointDataSourceBase.<>c__DisplayClass11_0.<Subscribe>b__0()
+   at Microsoft.Extensions.Primitives.ChangeToken.OnChange(Func`1 changeTokenProducer, Action changeTokenConsumer)
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointDataSourceBase.Subscribe()
+   at Microsoft.AspNetCore.Mvc.Routing.ControllerActionEndpointDataSource..ctor(ControllerActionEndpointDataSourceIdProvider dataSourceIdProvider, IActionDescriptorCollectionProvider actions, ActionEndpointFactory endpointFactory, OrderedEndpointsSequenceProvider orderSequence)
+   at Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.GetOrCreateDataSource(IEndpointRouteBuilder endpoints)
+   at Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers(IEndpointRouteBuilder endpoints)
+   at Lotus.Catalog.Api.Startup.<>c.<Configure>b__5_1(IEndpointRouteBuilder endpoints) in /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api/Startup.cs:line 65
+   at Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints(IApplicationBuilder builder, Action`1 configure)
+   at Lotus.Catalog.Api.Startup.Configure(IApplicationBuilder app, IWebHostEnvironment env) in /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api/Startup.cs:line 63
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.<>c__DisplayClass4_0.<Build>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostBuilder.<>c__DisplayClass15_0.<UseStartup>b__1(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Filters.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2021-04-25 01:16:20.6059 Lotus.Catalog.Api.Program: Stopped program because of exceptionSystem.InvalidOperationException: The following errors occurred with attribute routing information:
+
+Error 1:
+For action: 'Lotus.Api.Catalog.Controller.CatalogController.GetProductByCategory (Lotus.Catalog.Api)'
+Error: While processing template 'api/v1/[controller]/[action/{category}]', a replacement value for the token 'action/{category}' could not be found. Available tokens: 'action, controller'. To use a '[' or ']' as a literal string in a route or within a constraint, use '[[' or ']]' instead.
+   at Microsoft.AspNetCore.Mvc.ApplicationModels.ApplicationModelFactory.Flatten[TResult](ApplicationModel application, Func`5 flattener)
+   at Microsoft.AspNetCore.Mvc.ApplicationModels.ControllerActionDescriptorBuilder.Build(ApplicationModel application)
+   at Microsoft.AspNetCore.Mvc.ApplicationModels.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.ApplicationModels.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.Initialize()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.GetChangeToken()
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointDataSourceBase.<>c__DisplayClass11_0.<Subscribe>b__0()
+   at Microsoft.Extensions.Primitives.ChangeToken.OnChange(Func`1 changeTokenProducer, Action changeTokenConsumer)
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointDataSourceBase.Subscribe()
+   at Microsoft.AspNetCore.Mvc.Routing.ControllerActionEndpointDataSource..ctor(ControllerActionEndpointDataSourceIdProvider dataSourceIdProvider, IActionDescriptorCollectionProvider actions, ActionEndpointFactory endpointFactory, OrderedEndpointsSequenceProvider orderSequence)
+   at Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.GetOrCreateDataSource(IEndpointRouteBuilder endpoints)
+   at Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers(IEndpointRouteBuilder endpoints)
+   at Lotus.Catalog.Api.Startup.<>c.<Configure>b__5_1(IEndpointRouteBuilder endpoints) in /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api/Startup.cs:line 65
+   at Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints(IApplicationBuilder builder, Action`1 configure)
+   at Lotus.Catalog.Api.Startup.Configure(IApplicationBuilder app, IWebHostEnvironment env) in /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api/Startup.cs:line 63
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.<>c__DisplayClass4_0.<Build>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostBuilder.<>c__DisplayClass15_0.<UseStartup>b__1(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Filters.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Lotus.Catalog.Api.Program.Main(String[] args) in /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api/Program.cs:line 21
+2021-04-25 01:17:48.3207 Lotus.Catalog.Api.Program: init main
+2021-04-25 01:17:48.6904 Microsoft.Hosting.Lifetime: Now listening on: https://localhost:5001
+2021-04-25 01:17:48.6937 Microsoft.Hosting.Lifetime: Now listening on: http://localhost:5000
+2021-04-25 01:17:48.6937 Microsoft.Hosting.Lifetime: Application started. Press Ctrl+C to shut down.
+2021-04-25 01:17:48.6937 Microsoft.Hosting.Lifetime: Hosting environment: Development
+2021-04-25 01:17:48.6937 Microsoft.Hosting.Lifetime: Content root path: /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api
+2021-04-25 01:23:32.4740 Microsoft.Hosting.Lifetime: Application is shutting down...
+2021-04-25 01:23:43.0176 Lotus.Catalog.Api.Program: init main
+2021-04-25 01:23:43.2739 Microsoft.Hosting.Lifetime: Now listening on: https://localhost:5001
+2021-04-25 01:23:43.2739 Microsoft.Hosting.Lifetime: Now listening on: http://localhost:5000
+2021-04-25 01:23:43.2739 Microsoft.Hosting.Lifetime: Application started. Press Ctrl+C to shut down.
+2021-04-25 01:23:43.2739 Microsoft.Hosting.Lifetime: Hosting environment: Development
+2021-04-25 01:23:43.2739 Microsoft.Hosting.Lifetime: Content root path: /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api
+2021-04-25 01:25:11.2923 Microsoft.Hosting.Lifetime: Application is shutting down...
+2021-04-25 01:30:58.6762 Lotus.Catalog.Api.Program: init main
+2021-04-25 01:30:58.9339 Microsoft.Hosting.Lifetime: Now listening on: https://localhost:5001
+2021-04-25 01:30:58.9339 Microsoft.Hosting.Lifetime: Now listening on: http://localhost:5000
+2021-04-25 01:30:58.9339 Microsoft.Hosting.Lifetime: Application started. Press Ctrl+C to shut down.
+2021-04-25 01:30:58.9339 Microsoft.Hosting.Lifetime: Hosting environment: Development
+2021-04-25 01:30:58.9339 Microsoft.Hosting.Lifetime: Content root path: /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api
+2021-04-25 01:33:20.4762 Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware: An unhandled exception has occurred while executing the request.Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "PUT api/v1/Catalog" for actions - Lotus.Api.Catalog.Controller.CatalogController.UpdateProduct (Lotus.Catalog.Api),Lotus.Api.Catalog.Controller.CatalogController.DisableProduct (Lotus.Catalog.Api). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwagger(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-04-25 01:43:19.2053 Microsoft.Hosting.Lifetime: Application is shutting down...
+2021-04-25 01:43:22.3592 Lotus.Catalog.Api.Program: init main
+2021-04-25 01:43:22.6155 Microsoft.Hosting.Lifetime: Now listening on: https://localhost:5001
+2021-04-25 01:43:22.6155 Microsoft.Hosting.Lifetime: Now listening on: http://localhost:5000
+2021-04-25 01:43:22.6155 Microsoft.Hosting.Lifetime: Application started. Press Ctrl+C to shut down.
+2021-04-25 01:43:22.6155 Microsoft.Hosting.Lifetime: Hosting environment: Development
+2021-04-25 01:43:22.6155 Microsoft.Hosting.Lifetime: Content root path: /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api
+2021-04-25 01:44:21.0916 Microsoft.Hosting.Lifetime: Application is shutting down...
+2021-04-25 01:44:24.1520 Lotus.Catalog.Api.Program: init main
+2021-04-25 01:44:24.4052 Microsoft.Hosting.Lifetime: Now listening on: https://localhost:5001
+2021-04-25 01:44:24.4052 Microsoft.Hosting.Lifetime: Now listening on: http://localhost:5000
+2021-04-25 01:44:24.4052 Microsoft.Hosting.Lifetime: Application started. Press Ctrl+C to shut down.
+2021-04-25 01:44:24.4052 Microsoft.Hosting.Lifetime: Hosting environment: Development
+2021-04-25 01:44:24.4052 Microsoft.Hosting.Lifetime: Content root path: /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api
+2021-04-25 01:48:17.7177 Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware: An unhandled exception has occurred while executing the request.System.FormatException: 'string' is not a valid 24 digit hex string.
+   at MongoDB.Driver.Core.Connections.BinaryConnection.SendMessagesAsync(IEnumerable`1 messages, MessageEncoderSettings messageEncoderSettings, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.WireProtocol.CommandUsingCommandMessageWireProtocol`1.ExecuteAsync(IConnection connection, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Servers.Server.ServerChannel.ExecuteProtocolAsync[TResult](IWireProtocol`1 protocol, ICoreSession session, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.RetryableWriteOperationExecutor.ExecuteAsync[TResult](IRetryableWriteOperation`1 operation, RetryableWriteContext context, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.BulkUnmixedWriteOperationBase`1.ExecuteBatchAsync(RetryableWriteContext context, Batch batch, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.BulkUnmixedWriteOperationBase`1.ExecuteBatchesAsync(RetryableWriteContext context, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.BulkMixedWriteOperation.ExecuteBatchAsync(RetryableWriteContext context, Batch batch, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.BulkMixedWriteOperation.ExecuteAsync(IWriteBinding binding, CancellationToken cancellationToken)
+   at MongoDB.Driver.OperationExecutor.ExecuteWriteOperationAsync[TResult](IWriteBinding binding, IWriteOperation`1 operation, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.ExecuteWriteOperationAsync[TResult](IClientSessionHandle session, IWriteOperation`1 operation, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.BulkWriteAsync(IClientSessionHandle session, IEnumerable`1 requests, BulkWriteOptions options, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionBase`1.InsertOneAsync(TDocument document, InsertOneOptions options, Func`3 bulkWriteAsync)
+   at Lotus.Catalog.Api.Repository.ProductsRepository.AddAsync(Product entity) in /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api/Repository/ProductsRepository.cs:line 20
+   at Lotus.Api.Catalog.Controller.CatalogController.CreateProduct(Product product) in /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api/Controllers/CatalogController.cs:line 73
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-04-25 01:50:41.3549 Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware: An unhandled exception has occurred while executing the request.MongoDB.Driver.MongoBulkWriteException`1[Lotus.Catalog.Api.Entities.Product]: A bulk write operation resulted in one or more errors.
+  E11000 duplicate key error collection: Lotus_Catalog_Db.Products index: _id_ dup key: { _id: ObjectId('602d2149e773f2a3990b47f5') }
+   at MongoDB.Driver.MongoCollectionImpl`1.BulkWriteAsync(IClientSessionHandle session, IEnumerable`1 requests, BulkWriteOptions options, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at Lotus.Catalog.Api.Data.CatalogContextSeed.SeedData(IMongoCollection`1 productCollection) in /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api/Data/CatalogContextSeed.cs:line 17
+   at CatalogContext..ctor(IConfiguration configuration) in /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api/Data/CatalogContext.cs:line 29
+   at ResolveService(ILEmitResolverBuilderRuntimeContext , ServiceProviderEngineScope )
+   at ResolveService(ILEmitResolverBuilderRuntimeContext , ServiceProviderEngineScope )
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method75(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-04-25 01:51:42.3756 Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware: An unhandled exception has occurred while executing the request.MongoDB.Driver.MongoBulkWriteException`1[Lotus.Catalog.Api.Entities.Product]: A bulk write operation resulted in one or more errors.
+  E11000 duplicate key error collection: Lotus_Catalog_Db.Products index: _id_ dup key: { _id: ObjectId('602d2149e773f2a3990b47f5') }
+   at MongoDB.Driver.MongoCollectionImpl`1.BulkWriteAsync(IClientSessionHandle session, IEnumerable`1 requests, BulkWriteOptions options, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at Lotus.Catalog.Api.Data.CatalogContextSeed.SeedData(IMongoCollection`1 productCollection) in /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api/Data/CatalogContextSeed.cs:line 17
+   at CatalogContext..ctor(IConfiguration configuration) in /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api/Data/CatalogContext.cs:line 29
+   at ResolveService(ILEmitResolverBuilderRuntimeContext , ServiceProviderEngineScope )
+   at ResolveService(ILEmitResolverBuilderRuntimeContext , ServiceProviderEngineScope )
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method83(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-04-25 01:59:49.0856 Microsoft.Hosting.Lifetime: Application is shutting down...
+2021-04-25 02:31:33.2233 Lotus.Catalog.Api.Program: init main
+2021-04-25 02:31:33.5112 Microsoft.Hosting.Lifetime: Now listening on: https://localhost:5001
+2021-04-25 02:31:33.5134 Microsoft.Hosting.Lifetime: Now listening on: http://localhost:5000
+2021-04-25 02:31:33.5134 Microsoft.Hosting.Lifetime: Application started. Press Ctrl+C to shut down.
+2021-04-25 02:31:33.5134 Microsoft.Hosting.Lifetime: Hosting environment: Development
+2021-04-25 02:31:33.5134 Microsoft.Hosting.Lifetime: Content root path: /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api
+2021-04-25 02:32:09.1257 Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware: An unhandled exception has occurred while executing the request.MongoDB.Driver.MongoBulkWriteException`1[Lotus.Catalog.Api.Entities.Product]: A bulk write operation resulted in one or more errors.
+  E11000 duplicate key error collection: Lotus_Catalog_Db.Products index: _id_ dup key: { _id: ObjectId('602d2149e773f2a3990b47f5') }
+   at MongoDB.Driver.MongoCollectionImpl`1.BulkWriteAsync(IClientSessionHandle session, IEnumerable`1 requests, BulkWriteOptions options, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at Lotus.Catalog.Api.Data.CatalogContextSeed.SeedData(IMongoCollection`1 productCollection) in /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api/Data/CatalogContextSeed.cs:line 17
+   at CatalogContext..ctor(IConfiguration configuration) in /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api/Data/CatalogContext.cs:line 29
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method9(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-04-25 02:32:45.7764 Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware: An unhandled exception has occurred while executing the request.MongoDB.Driver.MongoBulkWriteException`1[Lotus.Catalog.Api.Entities.Product]: A bulk write operation resulted in one or more errors.
+  E11000 duplicate key error collection: Lotus_Catalog_Db.Products index: _id_ dup key: { _id: ObjectId('602d2149e773f2a3990b47f5') }
+   at MongoDB.Driver.MongoCollectionImpl`1.BulkWriteAsync(IClientSessionHandle session, IEnumerable`1 requests, BulkWriteOptions options, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at Lotus.Catalog.Api.Data.CatalogContextSeed.SeedData(IMongoCollection`1 productCollection) in /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api/Data/CatalogContextSeed.cs:line 17
+   at CatalogContext..ctor(IConfiguration configuration) in /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api/Data/CatalogContext.cs:line 29
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method9(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-04-25 02:33:18.8546 Microsoft.Hosting.Lifetime: Application is shutting down...
+2021-04-25 02:33:21.7771 Lotus.Catalog.Api.Program: init main
+2021-04-25 02:33:22.0613 Microsoft.Hosting.Lifetime: Now listening on: https://localhost:5001
+2021-04-25 02:33:22.0638 Microsoft.Hosting.Lifetime: Now listening on: http://localhost:5000
+2021-04-25 02:33:22.0638 Microsoft.Hosting.Lifetime: Application started. Press Ctrl+C to shut down.
+2021-04-25 02:33:22.0638 Microsoft.Hosting.Lifetime: Hosting environment: Development
+2021-04-25 02:33:22.0638 Microsoft.Hosting.Lifetime: Content root path: /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api
+2021-04-25 02:41:55.1618 Microsoft.Hosting.Lifetime: Application is shutting down...
+2021-04-25 02:41:58.0943 Lotus.Catalog.Api.Program: init main
+2021-04-25 02:41:58.3532 Microsoft.Hosting.Lifetime: Now listening on: https://localhost:5001
+2021-04-25 02:41:58.3532 Microsoft.Hosting.Lifetime: Now listening on: http://localhost:5000
+2021-04-25 02:41:58.3532 Microsoft.Hosting.Lifetime: Application started. Press Ctrl+C to shut down.
+2021-04-25 02:41:58.3532 Microsoft.Hosting.Lifetime: Hosting environment: Development
+2021-04-25 02:41:58.3532 Microsoft.Hosting.Lifetime: Content root path: /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api
+2021-04-25 02:57:48.8904 Microsoft.Hosting.Lifetime: Application is shutting down...

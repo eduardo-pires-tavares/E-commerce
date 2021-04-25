@@ -26,8 +26,8 @@ public class CatalogContext : ICatalogContext
         var database = client.GetDatabase(_databaseName);
 
         Products = database.GetCollection<Product>(_collectionName);
-        CatalogContextSeed.SeedData(Products).GetAwaiter().GetResult();
+        //CatalogContextSeed.SeedData(Products).GetAwaiter().GetResult();
 
     }
-    public IMongoCollection<Product> Products {get; private set;}
+    public IMongoCollection<Product> Products { get; private set; }
 }

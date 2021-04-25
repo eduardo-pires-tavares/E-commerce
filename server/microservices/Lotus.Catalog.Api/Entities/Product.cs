@@ -5,11 +5,12 @@ using System;
 
 namespace Lotus.Catalog.Api.Entities
 {
-    public class Product : BaseEntity{
+    public class Product : BaseEntity
+    {
 
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string Id { get; }
         [BsonElement("Name")]
         [JsonProperty("Name")]
         public string Name { get; set; }
