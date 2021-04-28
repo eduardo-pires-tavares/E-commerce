@@ -15,5 +15,6 @@ namespace Lotus.Catalog.Api.Interfaces.Products
         public Task AddAsync(Product entity);
         public Task UpdateAsync(string id, Product entity);
         public Task DisableAsync(string id);
+        public Task DeleteProductsAsync();
     }
 }

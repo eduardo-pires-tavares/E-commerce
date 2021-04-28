@@ -37,15 +37,16 @@ namespace Lotus.Api.Catalog.Controller
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Product>> GetProductById(string id)
         {
-            var product = await _productsRepository.GetByIdAsync(id);
-
-            if (product is null)
+            try
+            {
+                var product = await _productsRepository.GetByIdAsync(id);
+                return Ok(product);
+            }
+            catch (System.Exception)
             {
                 _logger.LogError($"Product with id: {id}, not found.");
                 return NotFound();
             }
-
-            return Ok(product);
         }
 
         [Route("[action]/{category}", Name = "GetProductByCategory")]
@@ -54,20 +55,22 @@ namespace Lotus.Api.Catalog.Controller
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<Product>>> GetProductByCategory(string category)
         {
-            var products = await _productsRepository.GetProductsByCategory(category);
+            try
+            {
+                var products = await _productsRepository.GetProductsByCategory(category);
+                return Ok(products);
 
-            if (products is null)
+            }
+            catch (Exception)
             {
                 _logger.LogError($"Products with category: {category}, not found.");
                 return NotFound();
             }
-
-            return Ok(products);
         }
 
 
         [HttpPost]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.Created)]
         public async Task<IActionResult> CreateProduct([FromBody] Product product)
         {
             await _productsRepository.AddAsync(product);
@@ -102,6 +105,24 @@ namespace Lotus.Api.Catalog.Controller
             try
             {
                 await _productsRepository.DisableAsync(id);
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        [HttpDelete]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        public async Task<IActionResult> DeleteProducts()
+        {
+
+            try
+            {
+                await _productsRepository.DeleteProductsAsync();
                 return Ok();
 
             }

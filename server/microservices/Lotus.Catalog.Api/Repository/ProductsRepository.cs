@@ -58,5 +58,10 @@ namespace Lotus.Catalog.Api.Repository
 
             return await _context.Products.Find(filter).ToListAsync();
         }
+
+        public async Task DeleteProductsAsync()
+        {
+            await _context.Products.DeleteManyAsync(Builders<Product>.Filter.Empty);
+        }
     }
 }

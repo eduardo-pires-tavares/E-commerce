@@ -1,0 +1,7 @@
+2021-04-28 01:44:44.8963 Lotus.Catalog.Api.Program: init main
+2021-04-28 01:44:45.4411 Microsoft.Hosting.Lifetime: Now listening on: https://localhost:5001
+2021-04-28 01:44:45.4411 Microsoft.Hosting.Lifetime: Now listening on: http://localhost:5000
+2021-04-28 01:44:45.4411 Microsoft.Hosting.Lifetime: Application started. Press Ctrl+C to shut down.
+2021-04-28 01:44:45.4411 Microsoft.Hosting.Lifetime: Hosting environment: Development
+2021-04-28 01:44:45.4411 Microsoft.Hosting.Lifetime: Content root path: /home/ejstavares/E-commerce/server/microservices/Lotus.Catalog.Api
+2021-04-28 01:45:02.8940 Microsoft.Hosting.Lifetime: Application is shutting down...
