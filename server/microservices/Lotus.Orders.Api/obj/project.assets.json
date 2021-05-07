@@ -198,11 +198,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ejstavares/E-commerce/server/services/Lotus.Orders.Api/Lotus.Orders.Api.csproj",
+      "projectUniqueName": "/home/ejstavares/E-commerce/server/microservices/Lotus.Orders.Api/Lotus.Orders.Api.csproj",
       "projectName": "Lotus.Orders.Api",
-      "projectPath": "/home/ejstavares/E-commerce/server/services/Lotus.Orders.Api/Lotus.Orders.Api.csproj",
+      "projectPath": "/home/ejstavares/E-commerce/server/microservices/Lotus.Orders.Api/Lotus.Orders.Api.csproj",
       "packagesPath": "/home/ejstavares/.nuget/packages/",
-      "outputPath": "/home/ejstavares/E-commerce/server/services/Lotus.Orders.Api/obj/",
+      "outputPath": "/home/ejstavares/E-commerce/server/microservices/Lotus.Orders.Api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/ejstavares/.nuget/NuGet/NuGet.Config"

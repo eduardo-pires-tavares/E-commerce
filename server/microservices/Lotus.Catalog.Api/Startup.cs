@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Lotus.Catalog.Api.Data;
 using Lotus.Catalog.Api.Interfaces.Generic;
 using Lotus.Catalog.Api.Interfaces.Products;
 using Lotus.Catalog.Api.Repository;
@@ -31,8 +32,8 @@ namespace Lotus.Catalog.Api
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddScoped<ICatalogContext,CatalogContext>();
-            services.AddScoped<IProductsRepository,ProductsRepository>();
+            services.AddScoped<ICatalogContext, CatalogContext>();
+            services.AddScoped<IProductsRepository, ProductsRepository>();
 
 
             services.AddControllers()

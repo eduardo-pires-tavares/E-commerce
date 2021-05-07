@@ -198,11 +198,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ejstavares/E-commerce/server/services/Lotus.Discount.Api/Lotus.Discount.Api.csproj",
+      "projectUniqueName": "/home/ejstavares/E-commerce/server/microservices/Lotus.Discount.Api/Lotus.Discount.Api.csproj",
       "projectName": "Lotus.Discount.Api",
-      "projectPath": "/home/ejstavares/E-commerce/server/services/Lotus.Discount.Api/Lotus.Discount.Api.csproj",
+      "projectPath": "/home/ejstavares/E-commerce/server/microservices/Lotus.Discount.Api/Lotus.Discount.Api.csproj",
       "packagesPath": "/home/ejstavares/.nuget/packages/",
-      "outputPath": "/home/ejstavares/E-commerce/server/services/Lotus.Discount.Api/obj/",
+      "outputPath": "/home/ejstavares/E-commerce/server/microservices/Lotus.Discount.Api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/ejstavares/.nuget/NuGet/NuGet.Config"

@@ -10,19 +10,41 @@ services:
         volumes:
             - mongo_data:/data/db
 
+    basketdb:
+        image: redis
+        container_name: basketdb
+        restart: always
+        ports:
+            - "6379:6379"
+
+    basket.api:
+        restart: always
+        container_name: basket.api
+        image: ${DOCKER_REGISTRY-}basketapi
+        build:
+            context: .
+            dockerfile: microservices/Lotus.Basket.Api/Dockerfile
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - "DatabaseSettings:ConnectionString=basketdb:6379"
+        depends_on:
+            - basketdb
+        ports:
+            - "8001:80"
+
     catalog.api:
         restart: always
         container_name: catalog.api
         image: ${DOCKER_REGISTRY-}catalogapi
         build:
             context: .
-            dockerfile: Dockerfile
+            dockerfile: microservices/Lotus.Catalog.Api/Dockerfile
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
             - "DatabaseSettings:ConnectionString=mongodb://catalogdb:27017"
         depends_on:
             - catalogdb
         ports:
-            - "8000:80"
+            - "8002:80"
 volumes:
     mongo_data:

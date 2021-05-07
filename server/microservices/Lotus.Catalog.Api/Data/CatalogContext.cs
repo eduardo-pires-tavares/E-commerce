@@ -7,27 +7,26 @@ using System;
 
 namespace Lotus.Catalog.Api.Data
 {
-
-}
-public class CatalogContext : ICatalogContext
-{
-    private readonly IConfiguration _configuration;
-    private readonly string _connectionString;
-    private readonly string _databaseName;
-    private readonly string _collectionName;
-    public CatalogContext(IConfiguration configuration)
+    public class CatalogContext : ICatalogContext
     {
-        _configuration = configuration;
-        _connectionString = _configuration.GetSection("DatabaseSettings").GetValue<string>("ConnectionString");
-        _databaseName = _configuration.GetSection("DatabaseSettings").GetValue<string>("DatabaseName");
-        _collectionName = _configuration.GetSection("DatabaseSettings").GetValue<string>("CollectionName");
+        private readonly IConfiguration _configuration;
+        private readonly string _connectionString;
+        private readonly string _databaseName;
+        private readonly string _collectionName;
+        public CatalogContext(IConfiguration configuration)
+        {
+            _configuration = configuration;
+            _connectionString = _configuration.GetSection("DatabaseSettings").GetValue<string>("ConnectionString");
+            _databaseName = _configuration.GetSection("DatabaseSettings").GetValue<string>("DatabaseName");
+            _collectionName = _configuration.GetSection("DatabaseSettings").GetValue<string>("CollectionName");
 
-        var client = new MongoClient(_connectionString);
-        var database = client.GetDatabase(_databaseName);
+            var client = new MongoClient(_connectionString);
+            var database = client.GetDatabase(_databaseName);
 
-        Products = database.GetCollection<Product>(_collectionName);
-        CatalogContextSeed.SeedData(Products).GetAwaiter().GetResult();
+            Products = database.GetCollection<Product>(_collectionName);
+            CatalogContextSeed.SeedData(Products).GetAwaiter().GetResult();
 
+        }
+        public IMongoCollection<Product> Products { get; private set; }
     }
-    public IMongoCollection<Product> Products { get; private set; }
 }

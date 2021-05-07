@@ -71,11 +71,20 @@ namespace Lotus.Api.Catalog.Controller
 
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.Created)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> CreateProduct([FromBody] Product product)
         {
-            await _productsRepository.AddAsync(product);
+            try
+            {
+                await _productsRepository.AddAsync(product);
 
-            return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, product);
+                return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, product);
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError($"Error creating new catalog produtct: {product}.");
+                return BadRequest(ex.Message);
+            }
         }
 
 

@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Lotus.Basket.Api.Interfaces.Basket;
+using Lotus.Basket.Api.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,7 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
-namespace Lotus.Web.Api
+namespace Lotus.Basket.Api
 {
     public class Startup
     {
@@ -27,10 +29,17 @@ namespace Lotus.Web.Api
         public void ConfigureServices(IServiceCollection services)
         {
 
+
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = Configuration.GetValue<string>("CacheSettings:ConnectionString");
+
+            });
+            services.AddScoped<IBasketRepository, BasketRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Lotus.Web.Api", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Lotus.Basket.Api", Version = "v1" });
             });
         }
 
@@ -41,7 +50,7 @@ namespace Lotus.Web.Api
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Lotus.Web.Api v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Lotus.Basket.Api v1"));
             }
 
             app.UseHttpsRedirection();

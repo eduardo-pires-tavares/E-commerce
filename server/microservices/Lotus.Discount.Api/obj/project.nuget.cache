@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "X86wUKOenV4wN7CDT4VGQ4tTXREeS+9kKPtpsc986QYWMxjU4Jq5LnpWxAeB4FeVz0nk/i3ibk+lsH+fKCQQEA==",
+  "dgSpecHash": "yGX1ed08reReIFu1DRhyL8UHFXuswMIeNqc7LZTZYjN8mm1c9QP9yV4YDYwvwI1/AEhJUhVVxjS0F4oCvd0/7Q==",
   "success": true,
-  "projectFilePath": "/home/ejstavares/E-commerce/server/services/Lotus.Discount.Api/Lotus.Discount.Api.csproj",
+  "projectFilePath": "/home/ejstavares/E-commerce/server/microservices/Lotus.Discount.Api/Lotus.Discount.Api.csproj",
   "expectedPackageFiles": [
     "/home/ejstavares/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "/home/ejstavares/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",

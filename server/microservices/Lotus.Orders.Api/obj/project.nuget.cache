@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/TFH/IVKgt65qx5L5edCkZ4MTmNYF22GiQq2DccrdjcGnW95golYjqQknx74pYQmiGRX7gQRsWCxYJtzTaxm1g==",
+  "dgSpecHash": "pjyBODlNBMWOhoe7f3GzVDLXSpd2lxmzxE4+mTJAbt+5a2VETwTCfZwSJIlDRqDnWE9Rj5C83d2F14J9xXOxUw==",
   "success": true,
-  "projectFilePath": "/home/ejstavares/E-commerce/server/services/Lotus.Orders.Api/Lotus.Orders.Api.csproj",
+  "projectFilePath": "/home/ejstavares/E-commerce/server/microservices/Lotus.Orders.Api/Lotus.Orders.Api.csproj",
   "expectedPackageFiles": [
     "/home/ejstavares/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "/home/ejstavares/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
